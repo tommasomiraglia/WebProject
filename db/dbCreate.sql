@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
     longdescription TEXT NOT NULL,
     upvote INT DEFAULT 0,
     downvote INT DEFAULT 0,
+    postDate datetime,
     groupId INT,
     userId INT,
     primary key (postId),
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
 CREATE TABLE IF NOT EXISTS COMMENTS (
     commentId INT AUTO_INCREMENT,
     longdescription VARCHAR(100) NOT NULL,
+    commentDate date,
     userId INT,
     postId INT,
     primary key (commentId),
@@ -54,7 +56,7 @@ CREATE TABLE IF NOT EXISTS COMMENTS (
 CREATE TABLE IF NOT EXISTS PARTICIPANT (
     userId INT,
     groupId INT,
-    subscription_date DATE,
+    subscriptionDate DATE,
     primary key (userId, groupId),
     FOREIGN KEY (userId) REFERENCES USERS(userId)
         ON DELETE CASCADE 
