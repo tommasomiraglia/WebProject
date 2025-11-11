@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
     upvote INT DEFAULT 0,
     downvote INT DEFAULT 0,
     postDate datetime,
+    postImage VARCHAR(100),
     groupId INT,
     userId INT,
     primary key (postId),
