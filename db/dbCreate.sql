@@ -9,9 +9,8 @@ CREATE TABLE IF NOT EXISTS USERS (
     username VARCHAR(20) NOT NULL UNIQUE,
     email CHAR(63) NOT NULL UNIQUE,
     password CHAR(128) NOT NULL,
-    name CHAR(31) NULL, 
-    birthdate DATE NULL,
-    avatar BLOB,
+    avatar BLOB DEFAULT NULL,
+    gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
     typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
     primary key (userId)
 );
@@ -32,6 +31,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
     downvote INT DEFAULT 0,
     postDate datetime,
     postImage VARCHAR(100),
+    reportCount INT,
     groupId INT,
     userId INT,
     primary key (postId),
