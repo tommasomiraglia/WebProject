@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     username VARCHAR(20) NOT NULL UNIQUE,
     email CHAR(63) NOT NULL UNIQUE,
     password CHAR(128) NOT NULL,
-    avatar BLOB DEFAULT NULL,
+    avatar MEDIUMBLOB DEFAULT NULL,
     gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
     typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
     primary key (userId)
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS GROUPS (
     groupId INT AUTO_INCREMENT,
     name CHAR(20) NOT NULL UNIQUE,
     longdescription VARCHAR(128) NOT NULL,
-    avatar BLOB,
+    avatar MEDIUMBLOB,
     primary key (groupId)
 );
 
