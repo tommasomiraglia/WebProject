@@ -33,7 +33,7 @@
         }
         /* Classe per dimensionare l'immagine del polipo */
         .logo-upload-size {
-            max-width: 40px;
+            max-width: 200px;
             height: auto; 
         }
     </style>
@@ -42,20 +42,29 @@
 
 <body class="bg-light">
 
+        <!-- top bar -->
     <nav class="sticky-top bg-white py-2 px-3 border-bottom d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-            <i class="bi bi-list fs-2 text-dark me-2" role="button"></i>
-            <img src="../../assets/icon/form_octi.png" width="30" alt="Logo"> 
+            <!-- hamburger menu -->
+            <i class="bi bi-list fs-2 text-dark" role="button"></i>
+            <!-- logo -->
+            <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                <img src="../../assets/icon/home_octi.png" width="50" class="rounded-circle mx-2">
+            </a>
         </div>
-        
-        <div class="input-group w-50 mx-2">
-            <input type="text" class="form-control rounded-pill border-0 text-center bg-light" placeholder="Value" value="Value">
-            <span class="position-absolute end-0 top-50 translate-middle-y me-3 text-secondary" role="button">
-                <i class="bi bi-x"></i> 
-            </span>
+        <!-- search bar -->
+        <div class="input-group w-50">
+            <span class="input-group-text bg-white border-end-0 rounded-start-pill">
+                <i class="bi bi-search"></i> </span>
+            <input type="text" class="form-control border-start-0 rounded-end-pill" placeholder="Value">
         </div>
-        
-        <i class="bi bi-three-dots-vertical fs-4 text-dark" role="button"></i>
+
+        <div class="d-flex align-items-center justify-content-end">
+            <!-- dots -->
+            <button class="btn btn-link text-dark p-0 ms-2 flex-shrink-0" data-bs-toggle="dropdown">
+                <i class="bi bi-three-dots-vertical fs-4"></i>
+            </button>
+        </div>
     </nav>
     
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
