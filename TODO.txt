@@ -1,0 +1,18 @@
+osammot:
+
+[ ] home page 
+[ ] pop up javascript (javascript)
+[ ] utente loggato
+[ ] pagina utente
+
+vincent:
+
+[ ] navbar (javascript)
+[ ] forum
+[ ] pagina creazione post
+[ ] log in
+
+DA SPLITTARE :
+[ ] commenti 
+[ ] pagina  admin
+[ ] 2 pagine admin

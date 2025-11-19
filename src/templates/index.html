@@ -1,9 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-    <head>
-        <title>PoliHub - Homepage</title>
-    </head>
-    <body>
-        
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PoliHub - Homepage</title>
+    <link rel="icon" type="image/png" href="../../assets/icon/octopus.png">
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- import icone da bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body class="bg-light"> <!-- settiamo lo sfondo -->
+
+    <!-- top bar -->
+    <nav class="sticky-top bg-white py-2 px-3 border-bottom d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+            <!-- hamburger menu -->
+            <i class="bi bi-list fs-2 text-dark" role="button"></i>
+            <!-- logo -->
+            <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                <img src="../../assets/icon/home_octi.png" width="50" class="rounded-circle mx-2">
+            </a>
+        </div>
+        <!-- search bar -->
+        <div class="input-group w-50">
+            <span class="input-group-text bg-white border-end-0 rounded-start-pill">
+                <i class="bi bi-search"></i> </span>
+            <input type="text" class="form-control border-start-0 rounded-end-pill" placeholder="Value">
+        </div>
+
+        <div class="d-flex align-items-center justify-content-end">
+            <!-- log in -->
+            <button class="btn btn-dark rounded-pill text-nowrap flex-shrink-0">Log In</button>
+            <!-- dots -->
+            <button class="btn btn-link text-dark p-0 ms-2 flex-shrink-0" data-bs-toggle="dropdown">
+                <i class="bi bi-three-dots-vertical fs-4"></i>
+            </button>
+        </div>
+    </nav>
+</body>
+<!-- contenitore centrato -->
+<div class="container-sm py-3 custom-main-content">
+    <!-- Sidebar con le storie (contenuto secondario) -->
+    <aside class="stories-sidebar mb-4">
+        <div class="stories-wrapper d-flex overflow-auto">
+
+            <div class="d-flex gap-2 w-100">
+
+                <div class="card story-card rounded-4 text-white border-0 flex-grow-1"
+                    style="background-image: url('https://picsum.photos/200/300'); height: 200px;">
+                    <div class="card-body d-flex align-items-end">
+                        <header class="d-flex align-items-center"
+                            style="z-index: 2; position: absolute; bottom: 15px; left: 15px;">
+                            <img src="https://picsum.photos/55" class="rounded-circle me-2" width="30" height="30"
+                                alt="Avatar">
+                            <div>
+                                <h6 class="mb-0 fw-bold">p/Matrix</h6>
+                                <small class="text-white-60">010001001</small>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+
+                <div class="card story-card rounded-4 text-white border-0 flex-grow-1"
+                    style="background-image: url('https://picsum.photos/201/300'); height: 200px;">
+                    <div class="card-body d-flex align-items-end">
+                        <header class="d-flex align-items-center"
+                            style="z-index: 2; position: absolute; bottom: 15px; left: 15px;">
+                            <img src="https://picsum.photos/56" class="rounded-circle me-2" width="30" height="30"
+                                alt="Avatar">
+                            <div>
+                                <h6 class="mb-0 fw-bold">p/Art</h6>
+                                <small class="text-white-60">hello my friend!</small>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+
+                <div class="card story-card rounded-4 text-white border-0 flex-grow-1"
+                    style="background-image: url('https://picsum.photos/202/300'); height: 200px;">
+                    <div class="card-body d-flex align-items-end">
+                        <header class="d-flex align-items-center"
+                            style="z-index: 2; position: absolute; bottom: 15px; left: 15px;">
+                            <img src="https://picsum.photos/57" class="rounded-circle me-2" width="30" height="30"
+                                alt="Avatar">
+                            <div>
+                                <h6 class="mb-0 fw-bold">p/Coding</h6>
+                                <small class="text-white-60">#We love coding</small>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </aside>
+
+    <!-- Contenuto principale: il feed dei post -->
+    <main class="posts-feed">
+        <article class="card rounded-4 border shadow-sm mb-3">
+            <div class="card-body">
+                <header class="d-flex align-items-center mb-2">
+                    <img src="https://picsum.photos/50" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                    <div>
+                        <h6 class="mb-0 fw-bold">p/Computer Science</h6>
+                        <time datetime="2025-10-24" class="text-muted small">24/10/2025</time>
+                    </div>
+                </header>
+
+                <h5 class="card-title fw-bold">Looking for web developer!</h5>
+
+                <figure class="mb-3">
+                    <img src="https://picsum.photos/600/300" class="img-fluid rounded-3 w-100" alt="Coding laptop">
+                </figure>
+
+                <p class="card-text">We're looking for a passionate fresher to join...</p>
+
+                <footer class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="btn-group rounded-pill border" role="group" aria-label="Vote buttons">
+                        <button class="btn btn-light btn-sm rounded-start-pill" aria-label="Upvote">
+                            <i class="bi bi-arrow-up-circle"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm rounded-end-pill" aria-label="Downvote">
+                            <i class="bi bi-arrow-down-circle"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
+                    <button class="btn btn-light btn-sm" aria-label="More options">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                </footer>
+            </div>
+        </article>
+
+        <article class="card rounded-4 border shadow-sm mb-3">
+            <div class="card-body">
+                <header class="d-flex align-items-center mb-2">
+                    <img src="https://picsum.photos/51" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                    <div>
+                        <h6 class="mb-0 fw-bold">p/Architecture</h6>
+                        <time datetime="2025-10-24" class="text-muted small">24/10/2025</time>
+                    </div>
+                </header>
+
+                <h5 class="card-title fw-bold">Hello World! first post :)</h5>
+
+                <p class="card-text">Hiii</p>
+
+                <footer class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="btn-group rounded-pill border" role="group" aria-label="Vote buttons">
+                        <button class="btn btn-light btn-sm rounded-start-pill" aria-label="Upvote">
+                            <i class="bi bi-arrow-up-circle"></i>
+                        </button>
+                        <button class="btn btn-light btn-sm rounded-end-pill" aria-label="Downvote">
+                            <i class="bi bi-arrow-down-circle"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
+                    <button class="btn btn-light btn-sm" aria-label="More options">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                </footer>
+            </div>
+        </article>
+    </main>
+</div>
+<!-- import bottoni bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
