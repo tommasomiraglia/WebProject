@@ -62,3 +62,9 @@ body {
     max-width: 200px;
     width: 100%; 
 }
+
+/*ADMIN*/
+
+.admin-icon {
+    width:30px;
+}
