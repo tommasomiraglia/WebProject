@@ -170,9 +170,22 @@
                             </div>
                             <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
                         </div>
-                        <button class="btn btn-light btn-sm" aria-label="More options">
-                            <i class="bi bi-three-dots"></i>
-                        </button>
+                        <div class="dropup">
+
+                            <button class="btn btn-light btn-sm border-0" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" aria-label="More options">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <i class="bi bi-exclamation-circle me-2 fs-5"></i>
+                                        <span>Report</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </footer>
                 </div>
             </article>
