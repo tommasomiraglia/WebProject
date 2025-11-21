@@ -79,6 +79,7 @@ body {
     width: 30px;
 }
 
+/*SIDE BAR*/
 #sidebar {
     position: fixed;
     left: -280px;

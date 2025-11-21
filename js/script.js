@@ -21,7 +21,7 @@ overlay.addEventListener('click', () => {
     overlay.classList.remove('active');
 });
 
-// Aggiungi effetto hover ai link (opzionale, con Bootstrap utilities)
+// Aggiungi effetto hover ai link
 const links = document.querySelectorAll('#sidebar a');
 links.forEach(link => {
     link.addEventListener('mouseenter', function () {
