@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     username VARCHAR(20) NOT NULL UNIQUE,
     email CHAR(63) NOT NULL UNIQUE,
     password CHAR(128) NOT NULL,
-    avatar MEDIUMBLOB DEFAULT NULL,
+    avatar VARCHAR(255) DEFAULT NULL,
     gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
     typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
     primary key (userId)
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS GROUPS (
     groupId INT AUTO_INCREMENT,
     name CHAR(20) NOT NULL UNIQUE,
     longdescription VARCHAR(128) NOT NULL,
-    avatar MEDIUMBLOB,
+    avatar VARCHAR(255),
     primary key (groupId)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
     downvote INT DEFAULT 0,
     postDate datetime,
     postImage VARCHAR(100),
-    reportCount INT,
+    reportCount INT DEFAULT 0,
     groupId INT,
     userId INT,
     primary key (postId),
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
 
 CREATE TABLE IF NOT EXISTS COMMENTS (
     commentId INT AUTO_INCREMENT,
-    longdescription VARCHAR(100) NOT NULL,
+    longdescription VARCHAR(500) NOT NULL,
     commentDate date,
     userId INT,
     postId INT,
