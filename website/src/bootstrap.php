@@ -1,13 +1,12 @@
 <?php
-session_start();
-<<<<<<< HEAD
 
-require_once "/config/setting.php";
-require_once "/model/DatabaseHelper.php";
+require_once "config/settings.php";
+require_once "model/DatabaseHelper.php";
 
-$dbh = DatabaseHelper::getInstance();
-=======
-//define("ASSETS_DIR", "./assets/");
-require_once("./database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "unired", 3306);
->>>>>>> tommaso
+try {
+    $dbh = DatabaseHelper::getInstance();
+    echo "Connessione OK!";
+} catch(\Exception $e){
+    echo "Errore di connessione: " . $e->getMessage();
+}
+
