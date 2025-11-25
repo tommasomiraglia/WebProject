@@ -4,9 +4,9 @@
     <!-- D-FLEX = Elemento come contenitore Flex-Box-->
     <!-- JUSTIFY CONTENT / ALIGN ITEMS CENTER = centra il contenitore e i veri elementi -->
     <!-- MIN-V(viewport)H-100 = imposta altezza massima al 100% della viewport -->
-    <div class="col-8 col-sm-10 col-md-8 col-lg-5"> 
+    <div class="col-8 col-sm-8 col-md-8 col-lg-8 mx-auto">
         <!--Setta le colonne per i vari dispositivi , In ordine : TELEFONO/SMALL , SMALL/TABLET , > 768PX / GRANDI SCHERMI , LAPTOP/SCHERMI -->
-        <div class="card p-4 shadow-lg rounded-4"> 
+        <div class="card p-4 shadow-lg rounded-4">
             <!--ELEMENTO COME CARD = CARD-->
             <div class="card-body">
                 <h2 class="text-center mb-4 card-title fw-bold" style="display:none;">Login</h2>

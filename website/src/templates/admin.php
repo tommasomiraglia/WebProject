@@ -1,19 +1,3 @@
-<!doctype html>
-<html lang="it">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PoliHub - Homepage</title>
-    <link rel="icon" type="image/png" href="../../assets/icon/octopus.png">
-    <!-- link bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- import icone da bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-
-<body>
     <div class="container d-flex justify-content-center min-vh-100 pt-5">
         <div class="col-8 col-sm-8 col-md-8 col-lg-8">
             <header>
@@ -45,6 +29,3 @@
             </main>
         </div>
     </div>
-</body>
-
-</html>

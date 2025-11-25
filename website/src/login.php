@@ -6,14 +6,18 @@ if (isset($_POST["username"]) && isset($_POST["password"])){
     $user = $dbh->checkLogin($_POST["username"],$_POST["password"]);
     if(isset($user)){
         Utils::registerLoggedUser($user);
-        Utils::redirect("/index.php");
     } else {
         $templateParams["errorelogin"] = "Alex dai vieni a Buildare";
     }
 }
 
 if(Utils::isUserLoggedIn()){
-    Utils::redirect("/index.php");
+   if(Utils::isAdmin()){
+        $templateParams["nome"] = "templates/admin.php";
+        $templateParams["titolo"] = "PoliHub - Admin";
+    } else {
+        Utils::redirect("index.php");
+    }
 } else {
     $templateParams["titolo"] = "PoliHub - Log In";
     $templateParams["nome"] = "templates/form-login.php";

@@ -22,4 +22,8 @@ class Utils{
         exit;
     }
 
+    public static function isAdmin(){
+        return $_SESSION["role"] === self::ROLE_ADMIN;
+    }
+
 }
