@@ -66,4 +66,15 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+    //LOGIN//
+
+    public function checkLogin($username,$password){
+        $query = "SELECT userid,username,password,typology FROM USERS WHERE username=? AND password=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username,$password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
 }

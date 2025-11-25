@@ -1,18 +1,3 @@
-<!doctype html>
-<html lang="it">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login con Card Bootstrap</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-
 <main>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <!-- CONTAINER = Contenitore principare -->
@@ -25,16 +10,20 @@
             <!--ELEMENTO COME CARD = CARD-->
             <div class="card-body">
                 <h2 class="text-center mb-4 card-title fw-bold" style="display:none;">Login</h2>
-                <form>
-                    
+                <form action="#" method="POST">
+                    <?php if(isset($templateParams["errorelogin"])): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $templateParams["errorelogin"]; ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="mb-3">
                         <label for="usernameInput" class="form-label text-muted">Username</label>
-                        <input type="text" class="form-control form-control-lg" id="usernameInput" placeholder="Value">
+                        <input type="text" class="form-control form-control-lg" id="usernameInput" placeholder="Value" name="username">
                     </div>
 
                     <div class="mb-4">
                         <label for="passwordInput" class="form-label text-muted">Password</label>
-                        <input type="password" class="form-control form-control-lg" id="passwordInput" placeholder="Value">
+                        <input type="password" class="form-control form-control-lg" id="passwordInput" placeholder="Value" name="password">
                     </div>
 
                     <button type="submit" class="btn btn-custom-red w-100 py-3 mb-3 text-uppercase">
@@ -44,7 +33,7 @@
                 <p>Are you a new Polihubber? <a href="sing-up.html" class="card-link text-muted text-decoration-underscore">Sign Up</a></p>
             </div>
         </div>
-        <div class="mt-3"> 
+        <div class="mt-3">
                     <img src="../../assets/icon/form_octi.png" 
                          class="img-fluid d-block mx-auto logo-form-size" 
                          alt="Form icon"/>
@@ -52,10 +41,3 @@
     </div>
 </div>
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-        crossorigin="anonymous">
-</script>
-</body>
-</html>
