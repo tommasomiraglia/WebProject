@@ -8,6 +8,7 @@ $templateParams["nome"] = "templates/home.php"; // Dico a base.php di caricare h
 
 // 3. Prendo le storie dal DB
 $templateParams["storie"] = $dbh->getTopPosts(3);
+$templateParams["posts"] = $dbh->getPosts(10);
 
 // 4. Carico il layout grafico
 require("templates/base.php");
