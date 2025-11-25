@@ -4,11 +4,10 @@ require_once(__DIR__ . "/bootstrap.php");
 
 // 2. Imposto i dati per la pagina
 $templateParams["titolo"] = "PoliHub - Homepage";
-$templateParams["nome"] = "template/home.php"; // Dico a base.php di caricare home.php al centro
+$templateParams["nome"] = "templates/home.php"; // Dico a base.php di caricare home.php al centro
 
-// 3. Prendo i post dal DB
-// Attenzione: getPosts() deve esistere nel tuo DatabaseHelper
-//$templateParams["articoli"] = $dbh->getPosts(10); 
+// 3. Prendo le storie dal DB
+$templateParams["storie"] = $dbh->getTopPosts(3);
 
 // 4. Carico il layout grafico
-require("template/base.php");
+require("templates/base.php");

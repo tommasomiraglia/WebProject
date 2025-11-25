@@ -36,7 +36,20 @@ class DatabaseHelper {
     {
         return $this->db;
     }
-
+    public function getTopPosts($limit){
+        $query = "SELECT p.postId, p.title, p.postImage, p.upvote, g.groupId, g.name, g.avatar 
+                  FROM POSTS p, GROUPS g 
+                  WHERE p.groupId = g.groupId 
+                  ORDER BY p.upvote DESC 
+                  LIMIT ?";
+                  
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
 
 }
