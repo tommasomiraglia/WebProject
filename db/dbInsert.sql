@@ -1,8 +1,8 @@
-INSERT INTO USERS (username, email, password, gender, typology, avatar) VALUES
-('AdminMax', 'admin@unired.it', 'admin123', 'Uomo', 'admin', 'assets/avatar/avatar1.jpg'),
-('Giulia_99', 'giulia@email.com', 'pass123', 'Donna', 'utente', 'assets/avatar/avatar2.jpg'),
-('LucaDev', 'luca@email.com', 'pass456', 'Uomo', 'utente', NULL),
-('SimoDesign', 'simo@email.com', 'pass789', 'Non-binary', 'utente', 'assets/avatar/avatar3.jpg');
+INSERT INTO USERS (username, email, password, description , gender, typology, avatar) VALUES
+('AdminMax', 'admin@unired.it', 'admin123','The absolute God' , 'Uomo', 'admin', 'assets/avatar/avatar1.jpg'),
+('Giulia_99', 'giulia@email.com', 'pass123','Piopio', 'Donna', 'utente', 'assets/avatar/avatar2.jpg'),
+('LucaDev', 'luca@email.com', 'pass456', 'Piopio', 'Uomo', 'utente', NULL),
+('SimoDesign', 'simo@email.com', 'pass789', 'Piopio', 'Non-binary', 'utente', 'assets/avatar/avatar3.jpg');
 
 INSERT INTO GROUPS (name, longdescription, avatar) VALUES
 ('Informatica', 'Discussioni su codice, esami e tecnologia', 'assets/avatar/avatar1.jpg'),
