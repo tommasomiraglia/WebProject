@@ -23,8 +23,8 @@ INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES
 INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, downvote) VALUES
 ('Appunti di Java', 'Qualcuno ha gli appunti della lezione di ieri?', 2, 1, 'assets/post/post1.jpg', 10, 2),
 ('Il mio setup', 'Ecco dove passo le mie nottate a programmare.', 3, 1, 'assets/post/post2.jpg', 55, 0),
-('Guardate questo!', 'Foto random trovata in galleria.', 4, 2, 'assets/post/post3.png', 12, 5),
-('Libro di Analisi', 'Vendo libro come nuovo, contattatemi.', 2, 3, 'assets/post/post4.jpg', 0, 0);
+('Guardate questo!', 'Foto random trovata in galleria.', 4, 2, 'assets/post/post3.png', 1, 5),
+('Libro di Analisi', 'Vendo libro come nuovo, contattatemi.', 2, 3, 'assets/post/post4.jpg', 100, 0);
 
 -- INSERIMENTO COMMENTI
 INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
