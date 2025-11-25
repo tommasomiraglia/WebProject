@@ -7,7 +7,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])){
     if(isset($user)){
         Utils::registerLoggedUser($user);
     } else {
-        $templateParams["errorelogin"] = "Alex dai vieni a Buildare";
+        $templateParams["errorelogin"] = "Error";
     }
 }
 

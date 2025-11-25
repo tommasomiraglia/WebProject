@@ -69,8 +69,7 @@ class DatabaseHelper {
     //LOGIN//
 
     public function checkLogin($username,$password){
-        $query = "SELECT userid,username,password,typology FROM USERS WHERE username=? AND password=?";
-        $stmt = $this->db->prepare($query);
+        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?";        $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username,$password);
         $stmt->execute();
         $result = $stmt->get_result();

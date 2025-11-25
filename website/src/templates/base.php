@@ -65,12 +65,12 @@
 
         <div class="d-flex align-items-center justify-content-end">
 
-            <?php if(isset($_SESSION['idutente'])): ?>
+            <?php if(isset($_SESSION['userid'])): ?>
 
             <?php 
-        $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'octopus.png'; ?>
+        $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'avatar0.jpg'; ?>
             <a href="profilo.php" class="text-decoration-none me-2">
-                <img src="../assets/avatar/<?php echo $avatarImg; ?>" class="rounded-circle border" width="45"
+                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45"
                     height="45" alt="My Profile" style="object-fit: cover;">
             </a>
 
@@ -88,7 +88,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3" style="min-width: 250px;">
 
-                    <?php if(isset($_SESSION['idutente'])): ?>
+                    <?php if(isset($_SESSION['userid'])): ?>
                     <li>
                         <h6 class="dropdown-header">Hi,
                             <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
