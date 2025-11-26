@@ -10,7 +10,7 @@ class Utils{
         $_SESSION["userid"] = $user["userid"];
         $_SESSION["username"] = $user["username"];
         $_SESSION["role"] = $user["typology"];
-        $_SESSION["avatar"] = $user["avatar"]; 
+        $_SESSION["avatar"] = $user["avatar"];
     }
 
     public static function isUserLoggedIn(){

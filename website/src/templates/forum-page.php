@@ -43,7 +43,7 @@
                             alt="Avatar">
                         <div>
                             <h6 class="mb-0 fw-bold">
-                                <a href="user.php/id=<?php echo $post["userId"]?>" class="text-decoration-none text-dark">
+                                <a href="user.php?userId=<?php echo $post["userId"]?>" class="text-decoration-none text-dark">
                                     <?php echo $post["username"]?>
                                 </a>
                             </h6>

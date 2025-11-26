@@ -2,11 +2,14 @@
 
 require_once __DIR__ ."/bootstrap.php";
 
-if(Utils::isUserLoggedIn()){
-    $user = $dbh->getUserByUserId($_SESSION["userid"]);
-    $posts = $dbh->getPostsByUserId($_SESSION["userid"]);
+if(isset($_GET["userId"])){
+    $userId = $_GET["userId"];
+} else {
+    $userId = -1;
 }
 
+$user = $dbh->getUserByUserId($userId);
+$posts = $dbh->getPostsByUserId($userId);
 
 //AGGIUNGERE EVENTUALI CONTROLLI SE UTENTE LOGGATO O MENO OPPURE SE RESTITUISCE QUALCOSA //
 
