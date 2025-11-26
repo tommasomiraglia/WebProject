@@ -116,4 +116,23 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    //ADMIN UTILITIES//
+
+    public function getAllForums(){
+        $query = "SELECT groupId, name, avatar FROM GROUPS ORDER BY name DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllUsers(){
+        $query = "SELECT userId, username, avatar FROM USERS ORDER BY username DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }

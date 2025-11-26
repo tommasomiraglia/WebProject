@@ -15,7 +15,7 @@
                                 Reported Post</a></li>
                         </div>
                         <div class="my-3">
-                            <li><a href="forum-admin.html" class="text-decoration-none text-dark">
+                            <li><a href="adminForum.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/forumIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Manage Forums</a></li>
                         </div>
