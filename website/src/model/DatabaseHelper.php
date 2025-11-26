@@ -69,11 +69,31 @@ class DatabaseHelper {
     //LOGIN//
 
     public function checkLogin($username,$password){
-        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?";        $stmt = $this->db->prepare($query);
+        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?"; 
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username,$password);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
 
+    //USER//
+
+    public function getUserByUserId($userid){
+        $query = "SELECT username, avatar, description FROM USERS WHERE userid=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getPostsByUserId($userid){
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate,g.groupId, g.name, g.avatar FROM POSTS p JOIN GROUPS g ON p.groupId = g.groupId WHERE p.userId = ? ORDER BY p.postDate DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
