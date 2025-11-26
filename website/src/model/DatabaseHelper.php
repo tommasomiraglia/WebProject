@@ -69,7 +69,8 @@ class DatabaseHelper {
     //LOGIN//
 
     public function checkLogin($username,$password){
-        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?";        $stmt = $this->db->prepare($query);
+        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?"; 
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username,$password);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -117,5 +118,44 @@ class DatabaseHelper {
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $postId);
         return $stmt->execute();
+    }
+    //USER//
+
+    public function getUserByUserId($userid){
+        $query = "SELECT username, avatar, description FROM USERS WHERE userid=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getPostsByUserId($userid){
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate,g.groupId, g.name, g.avatar FROM POSTS p JOIN GROUPS g ON p.groupId = g.groupId WHERE p.userId = ? ORDER BY p.postDate DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //FORUM//
+
+    public function getGroupById($groupId){
+        $query = "SELECT g.*, COUNT(p.userId) AS memberCount FROM GROUPS g LEFT JOIN PARTICIPANT p ON g.groupId = p.groupId WHERE g.groupId = ? GROUP BY g.groupId ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getPostsByGroupId($groupId){
+        $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.avatar FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId WHERE P.groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

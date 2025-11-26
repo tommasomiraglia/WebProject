@@ -74,7 +74,7 @@
                 <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
                 <div>
                     <h6 class="mb-0 fw-bold">
-                        <a href="#" class="text-decoration-none text-dark">
+                        <a href="forum.php?id=<?php echo $post["groupId"]?>" class="text-decoration-none text-dark">
                             p/<?php echo htmlspecialchars($post['name']); ?>
                         </a>
                     </h6>

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     username VARCHAR(20) NOT NULL UNIQUE,
     email CHAR(63) NOT NULL UNIQUE,
     password CHAR(128) NOT NULL,
+    description VARCHAR(500),
     avatar VARCHAR(255) DEFAULT NULL,
     gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
     typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
