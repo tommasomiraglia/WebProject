@@ -1,25 +1,27 @@
 <?php
-
 require_once __DIR__ ."/bootstrap.php";
 
-if(isset($_GET["userId"])){
-    $userId = $_GET["userId"];
-} else {
-    $userId = -1;
+$userIdProfilo = -1;
+if(isset($_GET["id"])){
+    $userIdProfilo = $_GET["id"];
+} elseif(isset($_GET["userId"])){
+    $userIdProfilo = $_GET["userId"];
 }
 
-$user = $dbh->getUserByUserId($userId);
-$posts = $dbh->getPostsByUserId($userId);
+$user = $dbh->getUserByUserId($userIdProfilo);
+if($user){
+    $templateParams["username"] = $user["username"];
+    $templateParams["avatar"] = !empty($user["avatar"]) ? $user["avatar"] : "assets/avatar/octopus.png"; 
+    $templateParams["description"] = $user["description"] ?? "No description available.";
+    $viewerId = isset($_SESSION['userid']) ? $_SESSION['userid'] : -1;
+    $templateParams["posts"] = $dbh->getPostsByUserId($userIdProfilo, $viewerId);
 
-//AGGIUNGERE EVENTUALI CONTROLLI SE UTENTE LOGGATO O MENO OPPURE SE RESTITUISCE QUALCOSA //
+    $templateParams["nome"] = "templates/user-page.php";
+    $templateParams["titolo"] = "PoliHub - Profile of " . $user["username"];
 
-$templateParams["nome"] = "templates/user-page.php";
-$templateParams["titolo"] = "PoliHub - User Page";
-
-$templateParams["username"] = $user["username"];
-$templateParams["avatar"] = $user["avatar"];
-$templateParams["description"] = $user["description"];
-
-$templateParams["posts"] = $posts;
+} else {
+    $templateParams["titolo"] = "Utente non trovato";
+}
 
 require_once __DIR__ ."/templates/base.php";
+?>

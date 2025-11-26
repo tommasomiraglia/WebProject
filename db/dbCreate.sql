@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS USERS (
     password CHAR(128) NOT NULL,
     description VARCHAR(500),
     avatar VARCHAR(255) DEFAULT NULL,
-    gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
-    typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
+    gender ENUM('Male' , 'Female' , 'Non-binary' , 'I prefer not to say'),
+    typology ENUM('admin', 'user') NOT NULL DEFAULT 'user',
     primary key (userId)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS POSTS (
     longdescription TEXT NOT NULL,
     upvote INT DEFAULT 0,
     downvote INT DEFAULT 0,
-    postDate datetime,
+    postDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     postImage VARCHAR(100),
     reportCount INT DEFAULT 0,
     groupId INT,
@@ -66,4 +66,13 @@ CREATE TABLE IF NOT EXISTS PARTICIPANT (
     FOREIGN KEY (groupId) REFERENCES GROUPS(groupId)
         ON DELETE CASCADE 
         ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS LIKES (
+    postId INT, 
+    userId INT,
+    is_upvote BOOLEAN,
+    PRIMARY KEY (postId, userId),
+    FOREIGN KEY (postId) REFERENCES POSTS(postId) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES USERS(userid) ON DELETE CASCADE
 );

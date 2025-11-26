@@ -1,6 +1,4 @@
 <?php
-
-
 class DatabaseHelper {
     private static $instance = null;
     private $db;
@@ -8,7 +6,6 @@ class DatabaseHelper {
     // Il costruttore non ha bisogno di parametri se li prende direttamente da Settings
     private function __construct()
     {
-        // Importante: Assicurati che Settings sia già stata inclusa!
         $this->db = new mysqli(
             Settings::DB_SERVERNAME,
             Settings::DB_USERNAME,
@@ -17,7 +14,6 @@ class DatabaseHelper {
             Settings::DB_PORT
         );
         
-        // Gestione degli errori tramite eccezione (molto meglio di die())
         if ($this->db->connect_error) {
             die("Connection Failed : " .$this->db->connect_error);
         }
@@ -26,7 +22,6 @@ class DatabaseHelper {
     public static function getInstance()
     {
         if (self::$instance === null) {
-            // Istanzia la classe senza passare parametri al costruttore
             self::$instance = new self(); 
         }
         return self::$instance;
@@ -36,35 +31,42 @@ class DatabaseHelper {
     {
         return $this->db;
     }
-    public function getTopPosts($limit){
-        $query = "SELECT p.postId, p.title, p.postImage, p.upvote, g.groupId, g.name, g.avatar 
-                  FROM POSTS p, GROUPS g 
-                  WHERE p.groupId = g.groupId 
-                  ORDER BY p.upvote DESC 
-                  LIMIT ?";
-                  
+    public function getTopPosts($n){
+        $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
+            u.username, u.avatar as userIcon, 
+            g.name, g.avatar as groupIcon
+            FROM POSTS p 
+            JOIN USERS u ON p.userId = u.userid 
+            JOIN GROUPS g ON p.groupId = g.groupId 
+            ORDER BY (p.upvote - p.downvote) DESC 
+            LIMIT ?";
+
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $limit);
+        $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
-        
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-    public function getPosts($limit){
-        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, 
-                         g.groupId, g.name, g.avatar
-                  FROM POSTS p, GROUPS g
-                  WHERE p.groupId = g.groupId
-                  ORDER BY p.postDate DESC
-                  LIMIT ?";
+    }   
+    public function getPosts($n, $userId){
+        $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
+                     p.upvote, p.downvote,
+                     u.username, u.avatar as userIcon, 
+                     g.name as groupName, g.avatar as groupIcon,
+                     l.is_upvote as userVote
+              FROM POSTS p 
+              JOIN USERS u ON p.userId = u.userid 
+              JOIN GROUPS g ON p.groupId = g.groupId 
+              LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ? 
+              ORDER BY p.postDate DESC 
+              LIMIT ?";
     
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $limit);
+        $stmt->bind_param('ii', $userId, $n);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         return $result->fetch_all(MYSQLI_ASSOC);
-}
+    }
 
     //LOGIN//
 
@@ -77,6 +79,58 @@ class DatabaseHelper {
         return $result->fetch_assoc();
     }
 
+    //LIKE/DISLIKE//
+    public function toggleVote($postId, $userId, $isUpvote) {
+        $query = "SELECT is_upvote FROM LIKES WHERE postId = ? AND userId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $postId, $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $currentVote = (int)$row['is_upvote'];
+            $newVote = $isUpvote ? 1 : 0;
+            if ($currentVote === $newVote) {
+                $delQuery = "DELETE FROM LIKES WHERE postId = ? AND userId = ?";
+                $delStmt = $this->db->prepare($delQuery);
+                $delStmt->bind_param('ii', $postId, $userId);
+                $delStmt->execute();
+                $colonna = $isUpvote ? 'upvote' : 'downvote';
+                $this->db->query("UPDATE POSTS SET $colonna = GREATEST(0, $colonna - 1) WHERE postId = $postId");
+            
+                return ["status" => "removed", "type" => $colonna];
+            } else {
+                $upQuery = "UPDATE LIKES SET is_upvote = ? WHERE postId = ? AND userId = ?";
+                $upStmt = $this->db->prepare($upQuery);
+                $upStmt->bind_param('iii', $newVote, $postId, $userId);
+                $upStmt->execute();
+                if ($isUpvote) {
+                    $this->db->query("UPDATE POSTS SET upvote = upvote + 1, downvote = GREATEST(0, downvote - 1) WHERE postId = $postId");
+                    return ["status" => "swapped", "type" => "upvote"];
+                } else {
+                    $this->db->query("UPDATE POSTS SET downvote = downvote + 1, upvote = GREATEST(0, upvote - 1) WHERE postId = $postId");
+                    return ["status" => "swapped", "type" => "downvote"];
+                }
+            }
+        } else {
+            $insQuery = "INSERT INTO LIKES (postId, userId, is_upvote) VALUES (?, ?, ?)";
+            $val = $isUpvote ? 1 : 0;
+            $insStmt = $this->db->prepare($insQuery);
+            $insStmt->bind_param('iii', $postId, $userId, $val);
+            $insStmt->execute();
+            $colonna = $isUpvote ? 'upvote' : 'downvote';
+            $this->db->query("UPDATE POSTS SET $colonna = $colonna + 1 WHERE postId = $postId");
+            return ["status" => "added", "type" => $colonna];
+        }
+    }
+
+    //REPORT//
+    public function reportPost($postId) {
+        $query = "UPDATE POSTS SET reportCount = reportCount + 1 WHERE postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        return $stmt->execute();
+    }
     //USER//
 
     public function getUserByUserId($userid){
@@ -88,12 +142,20 @@ class DatabaseHelper {
         return $result->fetch_assoc();
     }
 
-    public function getPostsByUserId($userid){
-        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate,g.groupId, g.name, g.avatar FROM POSTS p JOIN GROUPS g ON p.groupId = g.groupId WHERE p.userId = ? ORDER BY p.postDate DESC";
+    public function getPostsByUserId($targetUserId, $viewerId){
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.upvote, p.downvote, p.groupId,u.userId, u.username, u.avatar, g.name as groupName, g.avatar as groupIcon,l.is_upvote as userVote  
+                  FROM POSTS p 
+                  JOIN USERS u ON p.userId = u.userid 
+                  JOIN GROUPS g ON p.groupId = g.groupId 
+                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ? 
+                  WHERE p.userId = ?
+                  ORDER BY p.postDate DESC";
+        
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i",$userid);
+        $stmt->bind_param('ii', $viewerId, $targetUserId);
         $stmt->execute();
         $result = $stmt->get_result();
+        
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -107,7 +169,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
-
+    
     public function getPostsByGroupId($groupId){
         $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.avatar FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId WHERE P.groupId = ?";
         $stmt = $this->db->prepare($query);
