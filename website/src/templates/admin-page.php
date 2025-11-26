@@ -20,7 +20,7 @@
                                 Manage Forums</a></li>
                         </div>
                         <div class="my-3">
-                            <li><a href="user-admin.html" class="text-decoration-none text-dark">
+                            <li><a href="adminUsers.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/userIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Manage Users</a></li>
                         </div>

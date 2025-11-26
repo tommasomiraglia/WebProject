@@ -21,7 +21,7 @@
             <article class="card rounded-4 border shadow-sm mb-3">
                 <div class="card-body">
                     <header class="d-flex align-items-center mb-2">
-                        <img src="<?php echo $post["avatar"];?>" class="rounded-circle me-2" width="40" height="40"
+                        <img src="../<?php echo $post["avatar"];?>" class="rounded-circle me-2" width="40" height="40"
                             alt="Avatar">
                         <div>
                             <h6 class="mb-0 fw-bold">
@@ -36,7 +36,7 @@
                     <h5 class="card-title fw-bold"><?php echo $post["title"]?></h5>
 
                     <figure class="mb-3">
-                        <img src="<?php echo $post["postImage"]?>" class="img-fluid rounded-3 w-100" alt="Coding laptop">
+                        <img src="../<?php echo $post["postImage"]?>" class="img-fluid rounded-3 w-100" alt="Coding laptop">
                     </figure>
 
                     <p class="card-text"><?php echo $post["longdescription"]?></p>
