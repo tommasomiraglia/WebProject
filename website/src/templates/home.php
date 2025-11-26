@@ -6,17 +6,20 @@
             <?php foreach($templateParams["storie"] as $storia): ?>
             <?php 
                 $postImageFromDb = $storia['postImage'];
+                // Correzione path: Se index.php è root, non serve ../ solitamente, ma lascio la tua logica
                 if (!empty($postImageFromDb)) {
                     $bgImage = '../' . $postImageFromDb;
                 } else {
                     $bgImage = 'https://picsum.photos/200/300';
                 }
+                
                 $avatarFromDb = $storia['avatar'];
                 if (!empty($avatarFromDb)) {
                     $groupAvatar = '../' . $avatarFromDb;
                 } else {
                     $groupAvatar = 'https://picsum.photos/50';
                 }
+                
                 $titolo = $storia['title'];
                 if(strlen($titolo) > 20) { 
                     $titolo = substr($titolo, 0, 20) . '...'; 
@@ -26,16 +29,12 @@
             <div class="card story-card rounded-4 text-white border-0 flex-grow-1"
                 style="background-image: url('<?php echo $bgImage; ?>'); height: 200px; background-size: cover; background-position: center; position: relative;">
 
-                <div
-                    style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); border-radius: inherit;">
+                <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); border-radius: inherit;">
                 </div>
 
                 <div class="card-body d-flex align-items-end" style="position: relative; z-index: 2;">
                     <header class="d-flex align-items-center" style="position: absolute; bottom: 15px; left: 15px;">
-
-                        <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="30" height="30"
-                            alt="Avatar">
-
+                        <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="30" height="30" alt="Avatar">
                         <div>
                             <h6 class="mb-0 fw-bold">
                                 <a href="#" class="text-decoration-none text-white">
@@ -53,27 +52,20 @@
         </div>
     </div>
 </aside>
-<!-- Contenuto principale: il feed dei post -->
+
 <main class="posts-feed">
 
     <?php if(isset($templateParams["posts"]) && count($templateParams["posts"]) > 0): ?>
     <?php foreach($templateParams["posts"] as $post): ?>
     <?php 
-                // --- PREPARAZIONE DATI ---
-                
-                // 1. Percorso Immagine Post
-                $postImg = null;
-                if (!empty($post['postImage'])) {
-                    $postImg = '../' . $post['postImage']; // Diventa ../assets/post/nomefile.jpg
-                }
-
-                // 2. Percorso Avatar Gruppo
-                $groupAvatar = !empty($post['avatar']) ? '../' . $post['avatar'] : 'https://picsum.photos/50';
-
-                // 3. Formattazione Data (d/m/Y)
-                $dateObj = new DateTime($post['postDate']);
-                $formattedDate = $dateObj->format('d/m/Y');
-            ?>
+        $postImg = null;
+        if (!empty($post['postImage'])) {
+            $postImg = '../' . $post['postImage'];
+        }
+        $groupAvatar = !empty($post['groupAvatar']) ? '../' . $post['groupAvatar'] : '../assets/avatar/avatar0.jpg';
+        $dateObj = new DateTime($post['postDate']);
+        $formattedDate = $dateObj->format('d/m/Y');
+    ?>
 
     <article class="card rounded-4 border shadow-sm mb-3">
         <div class="card-body">
@@ -107,12 +99,21 @@
             <footer class="d-flex justify-content-between align-items-center mt-3">
                 <div>
                     <div class="btn-group rounded-pill border" role="group" aria-label="Vote buttons">
-                        <button class="btn btn-light btn-sm rounded-start-pill" aria-label="Upvote">
+                        
+                        <button class="btn btn-light btn-sm rounded-start-pill d-flex align-items-center gap-1" 
+                                aria-label="Upvote"
+                                onclick="votaPost(<?php echo $post['postId']; ?>, 1)">
                             <i class="bi bi-arrow-up-circle"></i>
+                            <span id="upvote-<?php echo $post['postId']; ?>"><?php echo $post['upvote']; ?></span>
                         </button>
-                        <button class="btn btn-light btn-sm rounded-end-pill" aria-label="Downvote">
+                        
+                        <button class="btn btn-light btn-sm rounded-end-pill d-flex align-items-center gap-1" 
+                                aria-label="Downvote"
+                                onclick="votaPost(<?php echo $post['postId']; ?>, 0)">
                             <i class="bi bi-arrow-down-circle"></i>
+                            <span id="downvote-<?php echo $post['postId']; ?>"><?php echo $post['downvote']; ?></span>
                         </button>
+
                     </div>
                     <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
                 </div>
@@ -125,7 +126,8 @@
 
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center text-danger" href="#" 
+                               onclick="segnalaPost(<?php echo $post['postId']; ?>); return false;">
                                 <i class="bi bi-exclamation-circle me-2 fs-5"></i>
                                 <span>Report</span>
                             </a>

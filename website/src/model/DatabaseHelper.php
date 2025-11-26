@@ -51,12 +51,12 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function getPosts($limit){
-        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, 
-                         g.groupId, g.name, g.avatar
-                  FROM POSTS p, GROUPS g
-                  WHERE p.groupId = g.groupId
-                  ORDER BY p.postDate DESC
-                  LIMIT ?";
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.upvote, p.downvote, u.username, u.avatar, g.name, g.avatar as groupAvatar
+              FROM POSTS p 
+              JOIN USERS u ON p.userId = u.userid 
+              JOIN GROUPS g ON p.groupId = g.groupId 
+              ORDER BY p.postDate DESC 
+              LIMIT ?";
     
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $limit);
@@ -76,4 +76,46 @@ class DatabaseHelper {
         return $result->fetch_assoc();
     }
 
+    //LIKE/DISLIKE//
+    public function toggleVote($postId, $userId, $isUpvote) {
+        $query = "SELECT is_upvote FROM LIKES WHERE postId = ? AND userId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $postId, $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $delQuery = "DELETE FROM LIKES WHERE postId = ? AND userId = ?";
+            $delStmt = $this->db->prepare($delQuery);
+            $delStmt->bind_param('ii', $postId, $userId);
+            $delStmt->execute();
+            $colonna = $row['is_upvote'] ? 'upvote' : 'downvote';
+            $updateQuery = "UPDATE POSTS SET $colonna = $colonna - 1 WHERE postId = ?";
+            $upStmt = $this->db->prepare($updateQuery);
+            $upStmt->bind_param('i', $postId);
+            $upStmt->execute();
+            return ["status" => "removed", "type" => $colonna];
+        } else {
+            $insQuery = "INSERT INTO LIKES (postId, userId, is_upvote) VALUES (?, ?, ?)";
+            $val = $isUpvote ? 1 : 0;
+            $insStmt = $this->db->prepare($insQuery);
+            $insStmt->bind_param('iii', $postId, $userId, $val);
+            $insStmt->execute();
+            $colonna = $isUpvote ? 'upvote' : 'downvote';
+            $updateQuery = "UPDATE POSTS SET $colonna = $colonna + 1 WHERE postId = ?";
+            $upStmt = $this->db->prepare($updateQuery);
+            $upStmt->bind_param('i', $postId);
+            $upStmt->execute();
+            return ["status" => "added", "type" => $colonna];
+        }
+    }
+
+    //REPORT//
+    public function reportPost($postId) {
+        $query = "UPDATE POSTS SET reportCount = reportCount + 1 WHERE postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        return $stmt->execute();
+    }
 }

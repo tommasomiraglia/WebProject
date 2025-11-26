@@ -17,10 +17,10 @@ INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES
 (4, 3, '2023-11-01'); 
 
 INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, downvote) VALUES
-('Appunti di Java', 'Qualcuno ha gli appunti della lezione di ieri?', 2, 1, 'assets/post/post1.jpg', 10, 2),
-('Il mio setup', 'Ecco dove passo le mie nottate a programmare.', 3, 1, 'assets/post/post2.jpg', 55, 0),
-('Guardate questo!', 'Foto random trovata in galleria.', 4, 2, 'assets/post/post3.jpg', 1, 5),
-('Libro di Analisi', 'Vendo libro come nuovo, contattatemi.', 2, 3, 'assets/post/post4.jpg', 100, 0);
+('Appunti di Java', 'Qualcuno ha gli appunti della lezione di ieri?', 2, 1, 'assets/post/post1.jpg', 10, 2, '2023-11-01 10:00:00'),
+('Il mio setup', 'Ecco dove passo le mie nottate a programmare.', 3, 1, 'assets/post/post2.jpg', 55, 0, '2023-11-01 10:00:00'),
+('Guardate questo!', 'Foto random trovata in galleria.', 4, 2, 'assets/post/post3.jpg', 1, 5, '2023-11-01 10:00:00'),
+('Libro di Analisi', 'Vendo libro come nuovo, contattatemi.', 2, 3, 'assets/post/post4.jpg', 100, 0, '2023-11-01 10:00:00');
 
 INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
 ('Grazie mille, mi servivano!', 3, 1), 
