@@ -4,7 +4,7 @@ class Utils{
     //Classe per gestire i dati in SESSIONE
 
     public const ROLE_ADMIN = "admin";
-    public const ROLE_USER = "utente";
+    public const ROLE_USER = "user";
 
     public static function registerLoggedUser($user){
         $_SESSION["userid"] = $user["userid"];

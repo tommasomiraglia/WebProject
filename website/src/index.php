@@ -1,14 +1,14 @@
 <?php
-// 1. Includo la configurazione di base
 require_once(__DIR__ . "/bootstrap.php");
-//
-// 2. Imposto i dati per la pagina
 $templateParams["titolo"] = "PoliHub - Homepage";
-$templateParams["nome"] = "templates/home.php"; // Dico a base.php di caricare home.php al centro
+$templateParams["nome"] = "templates/home.php"; 
 
-// 3. Prendo le storie dal DB
 $templateParams["storie"] = $dbh->getTopPosts(3);
-$templateParams["posts"] = $dbh->getPosts(10);
 
-// 4. Carico il layout grafico
+// 1. Definisco $userid (Se l'utente è loggato prendo il suo ID, altrimenti metto -1)
+$userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : -1;
+
+// 2. Passo $userid alla funzione (così risolvi l'errore dei parametri mancanti)
+$templateParams["posts"] = $dbh->getPosts(10, $userid);
+
 require("templates/base.php");

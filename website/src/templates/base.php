@@ -94,7 +94,7 @@
                             <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="profilo.php">
+                        <a class="dropdown-item d-flex align-items-center py-2" href="user.php?userId=<?php echo $_SESSION['userid']?>">
                             <i class="bi bi-person fs-5 me-3"></i>
                             <span>My Profile</span>
                         </a>

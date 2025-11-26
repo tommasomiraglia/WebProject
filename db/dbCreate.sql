@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS USERS (
     password CHAR(128) NOT NULL,
     description VARCHAR(500),
     avatar VARCHAR(255) DEFAULT NULL,
-    gender ENUM('Uomo' , 'Donna' , 'Non-binary' , 'I prefer not to say'),
-    typology ENUM('admin', 'utente') NOT NULL DEFAULT 'utente',
+    gender ENUM('Male' , 'Female' , 'Non-binary' , 'I prefer not to say'),
+    typology ENUM('admin', 'user') NOT NULL DEFAULT 'user',
     primary key (userId)
 );
 
