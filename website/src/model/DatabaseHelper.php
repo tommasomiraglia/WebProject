@@ -96,4 +96,24 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    //FORUM//
+
+    public function getGroupById($groupId){
+        $query = "SELECT g.*, COUNT(p.userId) AS memberCount FROM GROUPS g LEFT JOIN PARTICIPANT p ON g.groupId = p.groupId WHERE g.groupId = ? GROUP BY g.groupId ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getPostsByGroupId($groupId){
+        $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.email, U.avatar FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId WHERE P.groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
