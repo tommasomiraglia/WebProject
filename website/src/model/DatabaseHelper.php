@@ -109,7 +109,7 @@ class DatabaseHelper {
     }
 
     public function getPostsByGroupId($groupId){
-        $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.email, U.avatar FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId WHERE P.groupId = ?";
+        $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.avatar FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId WHERE P.groupId = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i",$groupId);
         $stmt->execute();
