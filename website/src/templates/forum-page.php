@@ -42,7 +42,7 @@
                         <img src="<?php echo $post["avatar"];?>" class="rounded-circle me-2" width="40" height="40"
                             alt="Avatar">
                         <div>
-                            <h6 class="mb-0 fw-bold">
+                            <h6 class="mb-0 fw-bold">g
                                 <a href="user.php?userId=<?php echo $post["userId"]?>" class="text-decoration-none text-dark">
                                     <?php echo $post["username"]?>
                                 </a>
