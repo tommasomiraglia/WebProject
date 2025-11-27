@@ -33,12 +33,12 @@ class DatabaseHelper {
     }
     public function getTopPosts($n){
         $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
-            u.username, u.avatar as userIcon, 
+            u.username, u.avatar as userIcon,
             g.name, g.avatar as groupIcon
-            FROM POSTS p 
-            JOIN USERS u ON p.userId = u.userid 
-            JOIN GROUPS g ON p.groupId = g.groupId 
-            ORDER BY (p.upvote - p.downvote) DESC 
+            FROM POSTS p
+            JOIN USERS u ON p.userId = u.userid
+            JOIN GROUPS g ON p.groupId = g.groupId
+            ORDER BY (p.upvote - p.downvote) DESC
             LIMIT ?";
 
         $stmt = $this->db->prepare($query);
@@ -46,7 +46,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }   
+    }
     public function getPosts($n, $userId){
         $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
                      p.upvote, p.downvote,
@@ -144,10 +144,10 @@ class DatabaseHelper {
 
     public function getPostsByUserId($targetUserId, $viewerId){
         $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.upvote, p.downvote, p.groupId,u.userId, u.username, u.avatar, g.name as groupName, g.avatar as groupIcon,l.is_upvote as userVote  
-                  FROM POSTS p 
-                  JOIN USERS u ON p.userId = u.userid 
-                  JOIN GROUPS g ON p.groupId = g.groupId 
-                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ? 
+                  FROM POSTS p
+                  JOIN USERS u ON p.userId = u.userid
+                  JOIN GROUPS g ON p.groupId = g.groupId
+                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ?
                   WHERE p.userId = ?
                   ORDER BY p.postDate DESC";
         
@@ -197,4 +197,11 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getReportedPosts(){
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.reportCount, g.groupId, g.name, g.avatar  FROM POSTS p JOIN GROUPS g ON g.groupId = p.groupId WHERE p.reportCount >= 1 ORDER BY p.reportCount DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }

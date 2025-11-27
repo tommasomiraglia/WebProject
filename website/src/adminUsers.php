@@ -12,6 +12,6 @@ if(!empty($users)){
 }
 
 $templateParams["nome"] = "templates/admin-user.php";
-$templatesParams["titolo"] = "PoliHub - Gestione Utenti";
+$templateParams["titolo"] = "PoliHub - Gestione Utenti";
 
 require_once __DIR__ ."/templates/base.php";

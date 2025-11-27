@@ -10,7 +10,7 @@
                 <div class="text-left min-vh-100">
                     <ul class="list-unstyled">
                         <div class="mt-5 mb-3">
-                            <li><a href="reported-post.html" class="text-decoration-none text-dark">
+                            <li><a href="adminReport.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/alertIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Reported Post</a></li>
                         </div>
