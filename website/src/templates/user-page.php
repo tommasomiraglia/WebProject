@@ -103,7 +103,7 @@
                             </button>
 
                         </div>
-                        <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
+                        <a href="comment.php?postId=<?php echo $post['postId']; ?>" class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</a>
                     </div>
 
                     <div class="dropup">

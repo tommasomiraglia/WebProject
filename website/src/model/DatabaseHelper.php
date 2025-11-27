@@ -232,4 +232,23 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    //COMMENT//
+    public function getPostById($postId){
+        $query = "SELECT p.postId, p.title, p.longdescription, p.upvote, p.downvote, p.postDate, p.postImage, g.name, g.groupId, g.avatar FROM POSTS p JOIN GROUPS g ON g.groupId = p.groupId WHERE p.postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt -> bind_param("i" , $postId);
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+        return $result -> fetch_assoc();
+    }
+
+    public function getCommentsByPostId($postId){
+        $query = "SELECT c.commentId , c.longdescription, u.userId, u.username, u.avatar FROM COMMENTS c JOIN POSTS p ON c.postId = p.postId JOIN USERS u ON c.userId = u.userId WHERE c.postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
