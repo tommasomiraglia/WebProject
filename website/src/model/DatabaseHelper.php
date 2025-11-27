@@ -159,6 +159,34 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //FORUM - USER JOIN/LEFT/CHECK //
+
+    public function joinUserGroup($userId, $groupId){
+        $query = "INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES ( ? , ? , NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $userId, $groupId);
+        $stmt->execute();
+    }
+
+    public function leaveGroup($userId, $groupId){
+        $query = "DELETE FROM PARTICIPANT WHERE userId = ? AND groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $userId, $groupId);
+        $stmt->execute();
+    }
+
+    public function isUserFollowingGroup($userId, $groupId){
+        $query = "SELECT userId, groupId FROM PARTICIPANT WHERE userId = ? AND groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt -> bind_param("ii" , $userId , $groupId);
+        $stmt->execute();
+        $result = $stmt -> get_result();
+        if ($result -> num_rows > 0){
+            return true;
+        }
+        return false;
+    }
+
     //FORUM//
 
     public function getGroupById($groupId){
