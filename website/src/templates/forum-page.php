@@ -117,7 +117,8 @@
                                 </button>
 
                             </div>
-                            <a href="comment.php?postId=<?php echo $post["postId"]?>" class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</a>
+                            <a href="comment.php?postId=<?php echo $post["postId"]?>" class="btn btn-light btn-sm rounded-pill align-items-center gap-1">
+                            <i class="bi bi-chat-left-text-fill"></i> Comments</a>
                         </div>
 
                         <div class="dropup">

@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="mt-3">
-                <img src="../../assets/icon/form_octi.png" class="img-fluid d-block mx-auto logo-form-size"
+                <img src="../assets/icon/form_octi.png" class="img-fluid d-block mx-auto logo-form-size"
                     alt="Form icon" />
             </div>
         </div>
