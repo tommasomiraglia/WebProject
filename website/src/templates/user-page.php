@@ -21,7 +21,7 @@
     <main class="posts-feed">
         <?php if(isset($templateParams["posts"]) && count($templateParams["posts"]) > 0): ?>
         <?php foreach($templateParams["posts"] as $post): ?>
-        <?php 
+        <?php
         $postImg = null;
         if (!empty($post['postImage'])) {
             if (strpos($post['postImage'], 'assets') === false) {
@@ -30,7 +30,6 @@
                 $postImg = '../' . $post['postImage'];
             }
         }
-
         $groupAvatar = '../assets/avatar/avatar0.jpg'; 
         if (!empty($post['groupIcon'])) {
             if (strpos($post['groupIcon'], 'assets') === false) {
@@ -44,7 +43,7 @@
         $vote = $post['userVote'] ?? null;
         $upClass = ($vote === 1) ? 'text-primary fw-bold' : '';
         $downClass = ($vote !== null && $vote == 0) ? 'text-danger fw-bold' : '';
-    ?>
+        ?>
 
         <article class="card rounded-4 border shadow-sm mb-3">
             <div class="card-body">
@@ -104,7 +103,9 @@
                             </button>
 
                         </div>
-                        <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
+                        <a href="comment.php?postId=<?php echo $post["postId"]?>"
+                            class="btn btn-light btn-sm rounded-pill align-items-center gap-1">
+                            <i class="bi bi-chat-left-text-fill"></i> Comments</a>
                     </div>
 
                     <div class="dropup">

@@ -23,11 +23,22 @@
                 <div class="display-6 fw-normal"><?php echo $templateParams["memberCount"];?></div>
             </div>
 
-            <div class="d-flex gap-2">
-                <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
-                    Join
-                </button>
-            </div>
+            <?php if(!Utils::isUserLoggedIn()):?>
+                <div class="d-flex gap-2">
+                    <a href="login.php" class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                        Log In to join the Group
+                    </a>
+                </div>
+            <?php else:?>
+                <form action="forum-action.php" method="POST">
+                    <div class="d-flex gap-2">
+                        <input type="hidden" name="groupId" value="<?php echo $templateParams["groupId"]?>"/>
+                        <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                            <?php echo $templateParams["textButton"];?>
+                        </button>
+                    </div>
+                </form>
+            <?php endif;?>
         </div>
         <!--FORUM POST-->
         <hr class="my-4">
@@ -106,7 +117,8 @@
                                 </button>
 
                             </div>
-                            <button class="btn btn-light btn-sm rounded-pill fw-bold">Load Comments</button>
+                            <a href="comment.php?postId=<?php echo $post["postId"]?>" class="btn btn-light btn-sm rounded-pill align-items-center gap-1">
+                            <i class="bi bi-chat-left-text-fill"></i> Comments</a>
                         </div>
 
                         <div class="dropup">

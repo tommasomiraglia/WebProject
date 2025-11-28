@@ -13,8 +13,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])){
 
 if(Utils::isUserLoggedIn()){
    if(Utils::isAdmin()){
-        $templateParams["nome"] = "templates/admin.php";
-        $templateParams["titolo"] = "PoliHub - Admin";
+        Utils::redirect("admin.php");
     } else {
         Utils::redirect("index.php");
     }

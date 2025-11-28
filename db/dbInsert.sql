@@ -43,7 +43,10 @@ INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, d
 ('New Game Release', 'Just tried the new RPG everyone\'s talking about. Worth it!', 7, 4, 'assets/post/post6.jpg', 42, 1, '2023-11-03 20:00:00'),
 ('Digital Portrait', 'My latest artwork, let me know what you think!', 8, 2, 'assets/post/post7.jpg', 67, 0, '2023-11-04 15:00:00'),
 ('Concert Tonight', 'Anyone going to the concert tonight? Let\'s meet up!', 8, 5, 'assets/post/post8.jpg', 6960, 0, '2023-11-05 17:30:00'),
-('Database Tips', 'Sharing some SQL optimization tricks I learned.', 5, 1, NULL, 69, 1, '2023-11-06 10:45:00');
+('Database Tips', 'Sharing some SQL optimization tricks I learned.', 5, 1, NULL, 69, 1, '2023-11-06 10:45:00'),
+('Happy!', 'artwork!', 8, 2, 'assets/post/post9.jpg', 67, 0, '2023-11-04 15:00:00'),
+('FMA', 'let me know what you think!', 8, 2, 'assets/post/post10.jpg', 67, 0, '2023-11-04 15:00:00');
+
 
 INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
 ('Thanks so much, I needed these!', 3, 1), 

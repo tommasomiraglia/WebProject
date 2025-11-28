@@ -14,7 +14,7 @@ class Utils{
     }
 
     public static function isUserLoggedIn(){
-        return !empty($_SESSION["username"]);
+        return !empty($_SESSION["userid"]);
     }
 
     public static function redirect($path){

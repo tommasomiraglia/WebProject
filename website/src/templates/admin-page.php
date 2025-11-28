@@ -10,17 +10,17 @@
                 <div class="text-left min-vh-100">
                     <ul class="list-unstyled">
                         <div class="mt-5 mb-3">
-                            <li><a href="reported-post.html" class="text-decoration-none text-dark">
+                            <li><a href="adminReport.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/alertIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Reported Post</a></li>
                         </div>
                         <div class="my-3">
-                            <li><a href="forum-admin.html" class="text-decoration-none text-dark">
+                            <li><a href="adminForum.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/forumIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Manage Forums</a></li>
                         </div>
                         <div class="my-3">
-                            <li><a href="user-admin.html" class="text-decoration-none text-dark">
+                            <li><a href="adminUsers.php" class="text-decoration-none text-dark">
                                 <img src="../../assets/icon/admin/userIcon.png" alt="" class="img-fluid admin-icon"/>
                                 Manage Users</a></li>
                         </div>

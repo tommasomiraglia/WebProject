@@ -1,6 +1,4 @@
 <?php
-
-
 class DatabaseHelper {
     private static $instance = null;
     private $db;
@@ -35,12 +33,12 @@ class DatabaseHelper {
     }
     public function getTopPosts($n){
         $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
-            u.username, u.avatar as userIcon, 
+            u.username, u.avatar as userIcon,
             g.name, g.avatar as groupIcon
-            FROM POSTS p 
-            JOIN USERS u ON p.userId = u.userid 
-            JOIN GROUPS g ON p.groupId = g.groupId 
-            ORDER BY (p.upvote - p.downvote) DESC 
+            FROM POSTS p
+            JOIN USERS u ON p.userId = u.userid
+            JOIN GROUPS g ON p.groupId = g.groupId
+            ORDER BY (p.upvote - p.downvote) DESC
             LIMIT ?";
 
         $stmt = $this->db->prepare($query);
@@ -48,7 +46,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }   
+    }
     public function getPosts($n, $userId){
         $query = "SELECT p.postId, p.groupId, p.title, p.postImage, p.longdescription, p.postDate, 
                      p.upvote, p.downvote,
@@ -146,10 +144,10 @@ class DatabaseHelper {
 
     public function getPostsByUserId($targetUserId, $viewerId){
         $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.upvote, p.downvote, p.groupId,u.userId, u.username, u.avatar, g.name as groupName, g.avatar as groupIcon,l.is_upvote as userVote  
-                  FROM POSTS p 
-                  JOIN USERS u ON p.userId = u.userid 
-                  JOIN GROUPS g ON p.groupId = g.groupId 
-                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ? 
+                  FROM POSTS p
+                  JOIN USERS u ON p.userId = u.userid
+                  JOIN GROUPS g ON p.groupId = g.groupId
+                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ?
                   WHERE p.userId = ?
                   ORDER BY p.postDate DESC";
         
@@ -159,6 +157,34 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //FORUM - USER JOIN/LEFT/CHECK //
+
+    public function joinUserGroup($userId, $groupId){
+        $query = "INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES ( ? , ? , NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $userId, $groupId);
+        $stmt->execute();
+    }
+
+    public function leaveGroup($userId, $groupId){
+        $query = "DELETE FROM PARTICIPANT WHERE userId = ? AND groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $userId, $groupId);
+        $stmt->execute();
+    }
+
+    public function isUserFollowingGroup($userId, $groupId){
+        $query = "SELECT userId, groupId FROM PARTICIPANT WHERE userId = ? AND groupId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt -> bind_param("ii" , $userId , $groupId);
+        $stmt->execute();
+        $result = $stmt -> get_result();
+        if ($result -> num_rows > 0){
+            return true;
+        }
+        return false;
     }
 
     //FORUM//
@@ -171,18 +197,76 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
-
+    
     public function getPostsByGroupId($groupId, $userId){
-    $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.avatar,L.is_upvote as userVote   
-            FROM POSTS AS P 
-            JOIN USERS AS U ON P.userId = U.userId 
-            LEFT JOIN LIKES AS L ON P.postId = L.postId AND L.userId = ? 
-            WHERE P.groupId = ?
-            ORDER BY P.postDate DESC"; 
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param("ii", $userId, $groupId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
-}
+        $query = "SELECT P.postId, P.title, P.longdescription, P.upvote, P.downvote, P.postDate, P.postImage, P.reportCount, U.userId, U.username, U.avatar, L.is_upvote as userVote FROM POSTS AS P JOIN USERS AS U ON P.userId = U.userId LEFT JOIN LIKES AS L ON P.postId = L.postId AND L.userId = ? WHERE P.groupId = ? ORDER BY P.postDate DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $userId, $groupId); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }   
+
+    //ADMIN UTILITIES//
+
+    public function getAllForums(){
+        $query = "SELECT groupId, name, avatar FROM GROUPS ORDER BY name DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllUsers(){
+        $query = "SELECT userId, username, avatar FROM USERS ORDER BY username DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getReportedPosts(){
+        $query = "SELECT p.postId, p.title, p.postImage, p.longdescription, p.postDate, p.reportCount, g.groupId, g.name, g.avatar  FROM POSTS p JOIN GROUPS g ON g.groupId = p.groupId WHERE p.reportCount >= 1 ORDER BY p.reportCount DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //COMMENT//
+    public function getPostById($postId, $viewerId){
+        $query = "SELECT p.postId, p.title, p.longdescription, p.upvote, p.downvote, 
+                         p.postDate, p.postImage, p.groupId,
+                         u.userId, u.username, u.avatar, 
+                         g.name as groupName, g.avatar as groupIcon,
+                         l.is_upvote as userVote  
+                  FROM POSTS p 
+                  JOIN USERS u ON p.userId = u.userid 
+                  JOIN GROUPS g ON p.groupId = g.groupId 
+                  LEFT JOIN LIKES l ON p.postId = l.postId AND l.userId = ? 
+                  WHERE p.postId = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $viewerId, $postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function insertComment($postId, $userId, $text){
+        $query = "INSERT INTO COMMENTS (longdescription, userId, postId) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sii", $text, $userId, $postId);
+
+        return $stmt->execute();
+    }
+
+    public function getCommentsByPostId($postId){
+        $query = "SELECT c.commentId , c.longdescription, u.userId, u.username, u.avatar FROM COMMENTS c JOIN POSTS p ON c.postId = p.postId JOIN USERS u ON c.userId = u.userId WHERE c.postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
