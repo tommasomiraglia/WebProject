@@ -19,15 +19,11 @@ $isUserFollowing = false;
 if($userId > 0){
     $isUserFollowing = $dbh->isUserFollowingGroup($userId, $groupId);
 }
-if ($isUserFollowing){
-    $templateParams["textButton"] = "Leave Group";
-} else {
-    $templateParams["textButton"] = "Join Group";
-}
+$templateParams["isUserFollowing"] = $isUserFollowing;
 
 $templateParams["posts"] = $dbh->getPostsByGroupId($groupId, $userId);
 $templateParams["nome"] = "templates/forum-page.php";
-$nomeGruppo = isset($templateParams["name"]) ? $templateParams["name"] : "Gruppo non trovato";
+$nomeGruppo = isset($templateParams["name"]) ? $templateParams["name"] : "Group not found";
 $templateParams["titolo"] = "PoliHub - " . $nomeGruppo;
 
 require_once __DIR__ ."/templates/base.php";
