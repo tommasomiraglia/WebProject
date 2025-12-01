@@ -14,4 +14,4 @@ if(!empty($reportedPost)){
 $templateParams["nome"] = "templates/admin-report.php";
 $templateParams["titolo"] = "PoliHub - Report";
 
-require_once __DIR__ ."/templates/base.php";
+require_once __DIR__ ."/templates/base-admin.php";
