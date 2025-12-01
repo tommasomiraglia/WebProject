@@ -10,6 +10,7 @@ class Utils{
         $_SESSION["userid"] = $user["userid"];
         $_SESSION["username"] = $user["username"];
         $_SESSION["role"] = $user["typology"];
+        $_SESSION["email"] = $user["email"];
         $_SESSION["avatar"] = $user["avatar"];
     }
 

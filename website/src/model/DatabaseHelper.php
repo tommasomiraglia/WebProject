@@ -71,12 +71,51 @@ class DatabaseHelper {
     //LOGIN//
 
     public function checkLogin($username,$password){
-        $query = "SELECT userid, username, password, typology, avatar FROM USERS WHERE username=? AND password=?"; 
+        $query = "SELECT userid, username, password,email, typology, avatar FROM USERS WHERE username=? AND password=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username,$password);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
+    }
+
+    //SIGN UP UTILITIES//
+    
+    public function isUserAvailable($username, $email){
+        $query = "SELECT username, email FROM USERS WHERE username = ? OR email = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss",$username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows === 0;
+    }
+
+    public function addUser($username,$email,$password,$gender,$typology = "user"){
+        $query = "INSERT INTO USERS(username, email, password, gender , typology) VALUES (?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+    
+        if (!$stmt) {
+            error_log("Prepare failed: (" . $this->db->errno . ") " . $this->db->error);
+            return false;
+        }
+    
+        $stmt->bind_param("sssss", $username, $email, $password, $gender, $typology);
+    
+        if (!$stmt->execute()) {
+            error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+            $stmt->close();
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    public function getGender(){
+        $query = "SELECT DISTINCT gender FROM USERS";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     //LIKE/DISLIKE//
@@ -205,7 +244,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }   
+    }
 
     //ADMIN UTILITIES//
 

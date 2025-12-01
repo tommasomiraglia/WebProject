@@ -28,7 +28,7 @@
                             Sign In
                         </button>
                     </form>
-                    <p>Are you a new Polihubber? <a href="sing-up.html"
+                    <p>Are you a new Polihubber? <a href="signup.php"
                             class="card-link text-muted text-decoration-underscore">Sign Up</a></p>
                 </div>
             </div>

@@ -1,45 +1,101 @@
 <!-- contenitore centrato -->
-    <div class="container-sm py-3 custom-main-content">
-        <!-- Contenuto principale: il feed dei post -->
-        <main class="posts-feed">
-            <?php if(isset($templateParams["error"])):?>
-                <h3><?php echo $templateParams["error"]?><h3>
-            <?php else:?>
-            <?php foreach($templateParams["posts"] as $post):?>
-            <article class="card rounded-4 border shadow-sm mb-3">
-                <div class="card-body">
-                    <header class="d-flex align-items-center mb-2">
-                        <img src="../<?php $post["avatar"];?>" class="rounded-circle me-2" width="40" height="40"
-                            alt="Avatar">
-                        <div>
-                            <h6 class="mb-0 fw-bold">
-                                <a href="forum.php?groupId=<?php echo $post["groupId"]?>" class="text-decoration-none text-dark">
-                                    <?php echo $post["name"];?>
-                                </a>
-                            </h6>
-                            <time datetime="2025-10-24" class="text-muted small"><?php echo $post["postDate"];?></time>
-                        </div>
-                    </header>
+<div class="container-sm py-3 custom-main-content">
+    <main class="posts-feed">
+        <?php if(isset($templateParams["error"])):?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $templateParams["error"]?>
+        </div>
+        <?php else:?>
 
-                    <h5 class="card-title fw-bold"><?php echo $post["title"];?></h5>
+        <?php foreach($templateParams["posts"] as $post):?>
+        <?php 
+            // Preparazione variabili per rendere il codice HTML più pulito
+            $postImg = $post["postImage"];
+            
+            // Gestione Avatar (fallback se vuoto)
+            $avatar = $post["avatar"];
+            if (empty($avatar)) {
+                $avatar = '../assets/avatar/avatar0.jpg'; // Percorso di default
+            }
 
-                    <figure class="mb-3">
-                        <img src="../<?php echo $post["postImage"];?>" class="img-fluid rounded-3 w-100" alt="Coding laptop">
-                    </figure>
+            // Formattazione Data
+            $dateObj = new DateTime($post["postDate"]);
+            $formattedDate = $dateObj->format('d/m/Y');
+        ?>
 
-                    <p class="card-text"><?php echo $post["longdescription"];?></p>
+        <article class="card rounded-4 border shadow-sm mb-3">
+            <div class="card-body">
 
-                    <footer class="d-flex justify-content-between align-items-center mt-3">
-                        <div>
-                            <a>Report Count : <?php echo $post["reportCount"];?></a>
-                        </div>
-                        <button class="btn btn-light btn-sm" aria-label="More options">
-                            <i class="bi bi-three-dots"></i>
+                <header class="d-flex align-items-center mb-2">
+                    <img src="../<?php echo $avatar;?>" class="rounded-circle me-2" width="40" height="40" alt="Avatar"
+                        style="object-fit: cover;">
+                    <div>
+                        <h6 class="mb-0 fw-bold">
+                            <a href="forum.php?groupId=<?php echo $post["groupId"]?>"
+                                class="text-decoration-none text-dark">
+                                <?php echo htmlspecialchars($post["name"]);?>
+                            </a>
+                        </h6>
+                        <time datetime="<?php echo $post["postDate"];?>" class="text-muted small">
+                            <?php echo $formattedDate;?>
+                        </time>
+                    </div>
+                </header>
+
+                <h5 class="card-title fw-bold"><?php echo htmlspecialchars($post["title"]);?></h5>
+
+                <?php if(!empty($postImg)): ?>
+                <figure class="mb-3">
+                    <img src="../<?php echo $postImg;?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                </figure>
+                <?php endif; ?>
+
+                <p class="card-text">
+                    <?php echo htmlspecialchars($post["longdescription"]);?>
+                </p>
+
+                <footer class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+
+                    <div class="text-danger fw-bold d-flex align-items-center">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <span>Reports: <?php echo $post["reportCount"];?></span>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm rounded-circle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" aria-label="Admin options">
+                            <i class="bi bi-three-dots fs-5"></i>
                         </button>
-                    </footer>
-                </div>
-            </article>
-            <?php endforeach;?>
-            <?php endif;?>
-        </main>
-    </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li>
+                                <h6 class="dropdown-header">Admin Actions</h6>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#"
+                                    onclick="ignoraReport(<?php echo $post['postId']; ?>)">
+                                    <i class="bi bi-check-circle me-2"></i> Dismiss Report
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="#"
+                                    onclick="cancellaPost(<?php echo $post['postId']; ?>)">
+                                    <i class="bi bi-trash me-2"></i> Delete Post
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+
+            </div>
+        </article>
+        <?php endforeach;?>
+        <?php endif;?>
+    </main>
+</div>

@@ -1,0 +1,110 @@
+:root {
+    --colore-brand: #8B3635;       
+    --colore-brand-hover: #dc3545;
+    --bg-body: #f4f6f9;
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- MODIFICA QUI: STILE AVATAR --- */
+/* Questa classe va applicata al tag <img> dell'admin */
+.admin-avatar {
+    width: 120px;           /* Larghezza fissa */
+    height: 120px;          /* Altezza fissa identica alla larghezza */
+    object-fit: cover;      /* FONDAMENTALE: ritaglia la foto se non è quadrata */
+    border-radius: 50%;     /* La rende perfettamente tonda */
+    margin-bottom: 1.5rem;
+    
+    /* Effetto "Doppio Bordo" */
+    border: 4px solid #fff;                 /* Bordo bianco interno */
+    outline: 3px solid var(--colore-brand); /* Bordo colorato esterno */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Leggera ombra */
+}
+
+/* Se usi ancora il logo da qualche parte nell'header, lascia anche questo, 
+   altrimenti puoi cancellarlo */
+header img.admin-logo {
+    max-width: 130px;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-weight: 700;
+    color: #212529;
+}
+
+/* --- STILI DEI PULSANTI (INVARIATI) --- */
+main > div > a {
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease; 
+    position: relative;
+}
+
+main > div > a > div > div {
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+main > div > a > div > div > i {
+    color: var(--colore-brand);
+    font-size: 1.25rem;
+    transition: color 0.2s ease;
+}
+
+main > div > a > i.bi-chevron-right {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* LOGICA DESKTOP */
+@media (hover: hover) {
+    
+    main > div > a:hover {
+        background-color: #fff0f0;
+        border-color: #e6b3b3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    main > div > a:hover > div > div {
+        background-color: #fff;
+    }
+
+    main > div > a:hover > div > div > i {
+        color: var(--colore-brand-hover);
+    }
+}
+
+/* LOGICA MOBILE */
+main > div > a:active {
+    transform: scale(0.98);
+    background-color: #e9ecef; 
+    border-color: transparent;
+    box-shadow: none; 
+}
+
+footer a {
+    color: #6c757d;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+footer a:hover {
+    color: var(--colore-brand);
+}
