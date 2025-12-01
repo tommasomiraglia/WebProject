@@ -8,7 +8,7 @@ if(!empty($forums)){
     $templateParams["forums"] = $forums;
 } else {
     //EVENTALE REDIRECT A PAGINA DI ERRORE COMUNE//
-    $templateParams["error"] = "Bravo CiccioGamer89 hai censurato tutti";
+    $templateParams["error"] = "No posts have been reported!";
 }
 
 $templateParams["nome"] = "templates/admin-forum.php";

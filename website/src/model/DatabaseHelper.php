@@ -272,6 +272,20 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function dismissReport($postId) {
+        $query = "UPDATE POSTS SET reportCount = 0 WHERE postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        return $stmt->execute();
+    }
+
+    public function deletePost($postId) {
+        $query = "DELETE FROM POSTS WHERE postId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        return $stmt->execute();
+    }
+
     //COMMENT//
     public function getPostById($postId, $viewerId){
         $query = "SELECT p.postId, p.title, p.longdescription, p.upvote, p.downvote, 

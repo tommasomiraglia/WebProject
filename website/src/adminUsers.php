@@ -8,7 +8,7 @@ if(!empty($users)){
     $templateParams["users"] = $users;
 } else {
     //EVENTALE REDIRECT A PAGINA DI ERRORE COMUNE//
-    $templateParams["error"] = "Bravo CiccioGamer89 hai censurato tutti";
+    $templateParams["error"] = "No users to show";
 }
 
 $templateParams["nome"] = "templates/admin-user.php";

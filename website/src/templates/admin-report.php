@@ -1,4 +1,3 @@
-<!-- contenitore centrato -->
 <div class="container-sm py-3 custom-main-content">
     <main class="posts-feed">
         <?php if(isset($templateParams["error"])):?>
@@ -9,21 +8,17 @@
 
         <?php foreach($templateParams["posts"] as $post):?>
         <?php 
-            // Preparazione variabili per rendere il codice HTML più pulito
             $postImg = $post["postImage"];
             
-            // Gestione Avatar (fallback se vuoto)
             $avatar = $post["avatar"];
             if (empty($avatar)) {
-                $avatar = '../assets/avatar/avatar0.jpg'; // Percorso di default
+                $avatar = '../assets/avatar/avatar0.jpg';
             }
-
-            // Formattazione Data
             $dateObj = new DateTime($post["postDate"]);
             $formattedDate = $dateObj->format('d/m/Y');
         ?>
 
-        <article class="card rounded-4 border shadow-sm mb-3">
+        <article class="card rounded-4 border shadow-sm mb-3" id="post-<?php echo $post['postId']; ?>">
             <div class="card-body">
 
                 <header class="d-flex align-items-center mb-2">
@@ -31,9 +26,8 @@
                         style="object-fit: cover;">
                     <div>
                         <h6 class="mb-0 fw-bold">
-                            <a href="forum.php?groupId=<?php echo $post["groupId"]?>"
-                                class="text-decoration-none text-dark">
-                                <?php echo htmlspecialchars($post["name"]);?>
+                            <a class="text-decoration-none text-dark">
+                                p/<?php echo htmlspecialchars($post["name"]);?>
                             </a>
                         </h6>
                         <time datetime="<?php echo $post["postDate"];?>" class="text-muted small">
@@ -74,7 +68,7 @@
 
                             <li>
                                 <a class="dropdown-item" href="#"
-                                    onclick="ignoraReport(<?php echo $post['postId']; ?>)">
+                                    onclick="inviaAzione('dismiss', <?php echo $post['postId']; ?>)">
                                     <i class="bi bi-check-circle me-2"></i> Dismiss Report
                                 </a>
                             </li>
@@ -85,7 +79,7 @@
 
                             <li>
                                 <a class="dropdown-item text-danger" href="#"
-                                    onclick="cancellaPost(<?php echo $post['postId']; ?>)">
+                                    onclick="inviaAzione('delete', <?php echo $post['postId']; ?>)">
                                     <i class="bi bi-trash me-2"></i> Delete Post
                                 </a>
                             </li>

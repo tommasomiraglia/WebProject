@@ -6,7 +6,14 @@ INSERT INTO USERS (username, email, password, description, gender, typology, ava
 ('MarcoTech', 'marco@email.com', 'pass321', 'AI researcher and data scientist', 'Male', 'user', 'assets/avatar/avatar4.jpg'),
 ('AnnaStudy', 'anna@email.com', 'pass654', 'Psychology student and mental health advocate', 'Female', 'user', 'assets/avatar/avatar5.jpg'),
 ('AlexGamer', 'alex@email.com', 'pass987', 'Gamer and streaming enthusiast', 'Male', 'user', NULL),
-('SofiaArt', 'sofia@email.com', 'pass147', 'Digital artist and illustrator', 'Female', 'user', 'assets/avatar/avatar6.jpg');
+('SofiaArt', 'sofia@email.com', 'pass147', 'Digital artist and illustrator', 'Female', 'user', 'assets/avatar/avatar6.jpg'),
+('SarahFit', 'sarah@email.com', 'fit123', 'Personal trainer and nutrition enthusiast', 'Female', 'user', 'assets/avatar/avatar7.jpg'),
+('ProfDavide', 'davide.prof@unired.it', 'prof456', 'Computer Science Professor. Office hours: Tue 10-12', 'Male', 'user', 'assets/avatar/avatar8.jpg'),
+('CineMatteo', 'matteo@email.com', 'movie789', 'Aspiring director. Cinema is life.', 'Male', 'user', 'assets/avatar/avatar9.jpg'),
+('LisaTravels', 'lisa@email.com', 'travel321', 'Erasmus student sharing experiences', 'Female', 'user', 'assets/avatar/avatar10.jpg'),
+('TrollMaster', 'troll@email.com', 'hahaha', 'I am here just to annoy people', 'Male', 'user', NULL),
+('ElenaBook', 'elena@email.com', 'read654', 'Literature student. Always reading.', 'Female', 'user', 'assets/avatar/avatar11.jpg'),
+('GymBro_98', 'gym@email.com', 'lift987', 'Do you even lift?', 'Male', 'user', NULL);
 
 INSERT INTO GROUPS (name, longdescription, avatar) VALUES
 ('Computer Science', 'Discussions about code, exams and technology', 'assets/avatar/avatar1.jpg'),
@@ -14,7 +21,9 @@ INSERT INTO GROUPS (name, longdescription, avatar) VALUES
 ('Psychology', 'University textbook sales and exchanges', 'assets/avatar/avatar3.jpg'),
 ('Gaming', 'Video games, reviews and multiplayer sessions', 'assets/avatar/avatar4.jpg'),
 ('Music', 'Share your favorite songs and discover new artists', 'assets/avatar/avatar5.jpg'),
-('Sports', 'All about sports, fitness and healthy lifestyle', 'assets/avatar/avatar6.jpg');
+('Sports', 'All about sports, fitness and healthy lifestyle', 'assets/avatar/avatar6.jpg'),
+('Cinema & TV', 'Discussing latest movies, series and directing techniques', 'assets/avatar/avatar7.jpg'),
+('Marketplace', 'Buy, sell and trade stuff on campus', 'assets/avatar/avatar8.jpg');
 
 INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES
 (1, 1, '2023-10-01'), 
@@ -31,22 +40,43 @@ INSERT INTO PARTICIPANT (userId, groupId, subscriptionDate) VALUES
 (8, 2, '2023-11-14'),
 (8, 5, '2023-11-18'),
 (1, 2, '2023-11-20'),
-(3, 4, '2023-11-22');
+(3, 4, '2023-11-22'),
+(9, 6, '2023-11-01'), 
+(15, 6, '2023-11-02'),
+(10, 1, '2023-09-01'),
+(11, 7, '2023-11-10'),
+(12, 7, '2023-11-12'),
+(13, 2, '2023-11-15'),
+(13, 4, '2023-11-15'),
+(14, 2, '2023-11-16'),
+(2, 8, '2023-11-20'), 
+(4, 8, '2023-11-21'); 
 
-INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, downvote, postDate) VALUES
-('Java Notes', 'Does anyone have the notes from yesterday\'s lecture?', 2, 1, 'assets/post/post1.jpg', 10, 2, '2023-11-01 10:00:00'),
-('My Setup', 'Here\'s where I spend my nights programming.', 3, 1, 'assets/post/post2.jpg', 55, 0, '2023-11-01 14:30:00'),
-('Check This Out!', 'Random photo found in my gallery.', 4, 2, 'assets/post/post3.jpg', 1423, 5, '2023-11-01 16:45:00'),
-('Calculus Textbook', 'Selling textbook in like-new condition, contact me.', 2, 3, 'assets/post/post4.jpg', 100, 0, '2023-11-01 18:20:00'),
-('Python vs JavaScript', 'Which one should I learn first as a beginner?', 5, 1, 'assets/post/post5.jpg', 23, 3, '2023-11-02 09:15:00'),
-('Study Group', 'Looking for people to form a study group for the upcoming exam.', 6, 3, NULL, 15, 0, '2023-11-02 11:30:00'),
-('New Game Release', 'Just tried the new RPG everyone\'s talking about. Worth it!', 7, 4, 'assets/post/post6.jpg', 42, 1, '2023-11-03 20:00:00'),
-('Digital Portrait', 'My latest artwork, let me know what you think!', 8, 2, 'assets/post/post7.jpg', 67, 0, '2023-11-04 15:00:00'),
-('Concert Tonight', 'Anyone going to the concert tonight? Let\'s meet up!', 8, 5, 'assets/post/post8.jpg', 6960, 0, '2023-11-05 17:30:00'),
-('Database Tips', 'Sharing some SQL optimization tricks I learned.', 5, 1, NULL, 69, 1, '2023-11-06 10:45:00'),
-('Happy!', 'artwork!', 8, 2, 'assets/post/post9.jpg', 67, 0, '2023-11-04 15:00:00'),
-('FMA', 'let me know what you think!', 8, 2, 'assets/post/post10.jpg', 67, 0, '2023-11-04 15:00:00');
-
+INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, downvote, postDate, reportCount) VALUES
+('Java Notes', 'Does anyone have the notes from yesterday\'s lecture?', 2, 1, 'assets/post/post1.jpg', 10, 2, '2023-11-01 10:00:00', 0),
+('My Setup', 'Here\'s where I spend my nights programming.', 3, 1, 'assets/post/post2.jpg', 55, 0, '2023-11-01 14:30:00', 0),
+('Check This Out!', 'Random photo found in my gallery.', 4, 2, 'assets/post/post3.jpg', 1423, 5, '2023-11-01 16:45:00', 3),
+('Calculus Textbook', 'Selling textbook in like-new condition, contact me.', 2, 3, 'assets/post/post4.jpg', 100, 0, '2023-11-01 18:20:00', 0),
+('Python vs JavaScript', 'Which one should I learn first as a beginner?', 5, 1, 'assets/post/post5.jpg', 23, 3, '2023-11-02 09:15:00', 1),
+('Study Group', 'Looking for people to form a study group for the upcoming exam.', 6, 3, NULL, 15, 0, '2023-11-02 11:30:00', 0),
+('New Game Release', 'Just tried the new RPG everyone\'s talking about. Worth it!', 7, 4, 'assets/post/post6.jpg', 42, 1, '2023-11-03 20:00:00', 0),
+('Digital Portrait', 'My latest artwork, let me know what you think!', 8, 2, 'assets/post/post7.jpg', 67, 0, '2023-11-04 15:00:00', 0),
+('Concert Tonight', 'Anyone going to the concert tonight? Let\'s meet up!', 8, 5, 'assets/post/post8.jpg', 6960, 0, '2023-11-05 17:30:00', 12),
+('Database Tips', 'Sharing some SQL optimization tricks I learned.', 5, 1, NULL, 69, 1, '2023-11-06 10:45:00', 0),
+('Happy!', 'artwork!', 8, 2, 'assets/post/post9.jpg', 67, 0, '2023-11-04 15:00:00', 0),
+('FMA', 'let me know what you think!', 8, 2, 'assets/post/post10.jpg', 67, 0, '2023-11-04 15:00:00', 0),
+('Exam Schedule Update', 'The final exam for Algorithms will be held in Room A3, not B1 as previously stated. Please take note.', 10, 1, assets/post/post19.jpg, 150, 0, '2023-11-07 08:30:00', 0),
+('Selling Old Bike', 'Mountain bike, used for 2 years. Tires need changing but works fine. 50€.', 4, 8, 'assets/post/post11.jpg', 12, 0, '2023-11-07 14:15:00', 0),
+('Oppenheimer vs Barbie', 'Finally watched both. Unpopular opinion: Barbie was visually better.', 11, 7, 'assets/post/post12.jpg', 89, 45, '2023-11-08 19:00:00', 2),
+('FREE SKINS CLICK HERE', 'Get free skins for all games! Just click this suspicious link!', 13, 4, NULL, 0, 120, '2023-11-09 03:00:00', 55),
+('Morning Run View', 'Woke up at 5AM for this. Totally worth it.', 9, 6, 'assets/post/post13.jpg', 23, 2, '2023-11-09 06:45:00', 0),
+('Modern Art is Trash', 'A toddler could draw this. You guys are wasting your time.', 13, 2, NULL, 5, 88, '2023-11-10 12:00:00', 18),
+('Book Club?', 'Anyone interested in starting a Dostoevsky reading club?', 14, 2, 'assets/post/post14.jpg', 34, 1, '2023-11-11 16:20:00', 0),
+('Segfault Help', 'I keep getting a segmentation fault on line 42. C++ is pain.', 3, 1, 'assets/post/post15.jpg', 15, 0, '2023-11-12 22:10:00', 0),
+('Best Jazz Bar in town', 'Found this hidden gem near the station. Live music every Friday.', 8, 5, 'assets/post/post16.jpg', 78, 0, '2023-11-13 20:30:00', 0),
+('New PR!', 'Finally hit 100kg on bench press! Light weight baby!', 15, 6, 'assets/post/post17.jpg', 112, 5, '2023-11-14 18:45:00', 0),
+('Weekend in Florence', 'The architecture here never ceases to amaze me.', 12, 2, 'assets/post/post18.jpg', 95, 0, '2023-11-15 11:00:00', 0),
+('Looking for Roommate', 'Apartment near center, 300€/month. Girls only.', 2, 8, assets/post/post19.jpg, 20, 0, '2023-11-16 09:30:00', 0);
 
 INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
 ('Thanks so much, I needed these!', 3, 1), 
@@ -61,4 +91,16 @@ INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
 ('Your art style is incredible!', 2, 8),
 ('I\'m going! See you there!', 7, 9),
 ('Super helpful tips, thanks for sharing!', 3, 10),
-('Could you explain the indexing part more?', 6, 10);
+('Could you explain the indexing part more?', 6, 10),
+('Thank you Professor!', 3, 13),
+('Is it still available?', 7, 14), 
+('DM sent', 4, 14), 
+('How dare you? Barbie was a masterpiece of sociology!', 12, 15), 
+('Don\'t click that link guys, it\'s a virus.', 7, 16), 
+('Ban this guy please.', 5, 16),
+('Great photo! What camera?', 11, 17),
+('Why are you even here if you hate art?', 8, 18),
+('I am interested! Crime and Punishment is my fav.', 6, 19),
+('Check if you initialized the pointer correctly.', 10, 20),
+('Congrats bro!', 9, 22),
+('We go Jim!', 7, 22); 

@@ -27,7 +27,7 @@
 
                 <?php if(!Utils::isUserLoggedIn()): ?>
                 <a href="login.php" class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
-                    Log In to join
+                    Log In to Join
                 </a>
 
                 <?php else: ?>

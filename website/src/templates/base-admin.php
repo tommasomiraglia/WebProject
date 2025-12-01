@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/WebProject/website/css/style.css">
     <script src="/WebProject/website/js/script.js" defer></script>
+    <script src="/WebProject/website/js/admin.js" defer></script>
+    
 </head>
 
 <body class="bg-light">
@@ -27,11 +29,32 @@
             <li class="mb-2">
                 <a href="admin.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
-                    <i class="bi bi-house me-3 fs-5"></i>
-                    <span>Home</span>
+                    <i class="bi bi-speedometer2 me-3 fs-5"></i>
+                    <span>Dashboard</span>
                 </a>
             </li>
-            <hr class="my-4">
+           <hr class="my-4">
+            <li class="mb-2">
+                <a href="adminReport.php"
+                    class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
+                    <i class="bi bi-file-text me-3 fs-5"></i>
+                    <span>Reported Post</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="adminForums.php"
+                    class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
+                    <i class="bi bi-chat-square-dots me-3 fs-5"></i>
+                    <span>Manage Forums</span>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="adminUsers.php"
+                    class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
+                    <i class="bi bi-people me-3 fs-5"></i>
+                    <span>Manage Users</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -49,7 +72,7 @@
 
             <?php 
         $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/avatar/avatar0.jpg'; ?>
-            <a href="user.php?userId=<?php echo $_SESSION['userid']?>" class="text-decoration-none me-2">
+            <a class="text-decoration-none me-2">
                 <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45"
                     height="45" alt="My Profile" style="object-fit: cover;">
             </a>
