@@ -2,8 +2,8 @@
 require_once __DIR__ . "/bootstrap.php";
 
 header('Content-Type: application/json');
-if(!Utils::isUserLoggedIn()){
-    echo json_encode(["success" => false, "message" => "You must log in"]);
+if (!isset($_SESSION['userid'])  ) {
+    echo json_encode(['success' => false, 'message' => 'Non autorizzato']);
     exit;
 }
 

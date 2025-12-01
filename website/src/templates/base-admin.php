@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="adminForums.php"
+                <a href="adminForum.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
                     <i class="bi bi-chat-square-dots me-3 fs-5"></i>
                     <span>Manage Forums</span>
@@ -95,12 +95,6 @@
                     <li>
                         <h6 class="dropdown-header">Hi,
                             <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="user.php?userId=<?php echo $_SESSION['userid']?>">
-                            <i class="bi bi-person fs-5 me-3"></i>
-                            <span>My Profile</span>
-                        </a>
                     </li>
                     <li>
                         <a class="dropdown-item d-flex align-items-center py-2" href="#" data-bs-toggle="modal"

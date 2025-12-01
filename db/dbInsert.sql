@@ -65,7 +65,7 @@ INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, d
 ('Database Tips', 'Sharing some SQL optimization tricks I learned.', 5, 1, NULL, 69, 1, '2023-11-06 10:45:00', 0),
 ('Happy!', 'artwork!', 8, 2, 'assets/post/post9.jpg', 67, 0, '2023-11-04 15:00:00', 0),
 ('FMA', 'let me know what you think!', 8, 2, 'assets/post/post10.jpg', 67, 0, '2023-11-04 15:00:00', 0),
-('Exam Schedule Update', 'The final exam for Algorithms will be held in Room A3, not B1 as previously stated. Please take note.', 10, 1, assets/post/post19.jpg, 150, 0, '2023-11-07 08:30:00', 0),
+('Exam Schedule Update', 'The final exam for Algorithms will be held in Room A3, not B1 as previously stated. Please take note.', 10, 1, 'assets/post/post19.jpg', 150, 0, '2023-11-07 08:30:00', 0),
 ('Selling Old Bike', 'Mountain bike, used for 2 years. Tires need changing but works fine. 50€.', 4, 8, 'assets/post/post11.jpg', 12, 0, '2023-11-07 14:15:00', 0),
 ('Oppenheimer vs Barbie', 'Finally watched both. Unpopular opinion: Barbie was visually better.', 11, 7, 'assets/post/post12.jpg', 89, 45, '2023-11-08 19:00:00', 2),
 ('FREE SKINS CLICK HERE', 'Get free skins for all games! Just click this suspicious link!', 13, 4, NULL, 0, 120, '2023-11-09 03:00:00', 55),
@@ -76,7 +76,7 @@ INSERT INTO POSTS (title, longdescription, userId, groupId, postImage, upvote, d
 ('Best Jazz Bar in town', 'Found this hidden gem near the station. Live music every Friday.', 8, 5, 'assets/post/post16.jpg', 78, 0, '2023-11-13 20:30:00', 0),
 ('New PR!', 'Finally hit 100kg on bench press! Light weight baby!', 15, 6, 'assets/post/post17.jpg', 112, 5, '2023-11-14 18:45:00', 0),
 ('Weekend in Florence', 'The architecture here never ceases to amaze me.', 12, 2, 'assets/post/post18.jpg', 95, 0, '2023-11-15 11:00:00', 0),
-('Looking for Roommate', 'Apartment near center, 300€/month. Girls only.', 2, 8, assets/post/post19.jpg, 20, 0, '2023-11-16 09:30:00', 0);
+('Looking for Roommate', 'Apartment near center, 300€/month. Girls only.', 2, 8, 'assets/post/post19.jpg', 20, 0, '2023-11-16 09:30:00', 0);
 
 INSERT INTO COMMENTS (longdescription, userId, postId) VALUES
 ('Thanks so much, I needed these!', 3, 1), 
