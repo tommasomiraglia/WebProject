@@ -25,44 +25,24 @@
 
         <ul class="list-unstyled px-3 py-2">
             <li class="mb-2">
-                <a href="index.php"
+                <a href="admin.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
                     <i class="bi bi-house me-3 fs-5"></i>
                     <span>Home</span>
                 </a>
             </li>
             <hr class="my-4">
-            <li class="mb-2">
-                <a href="#"
-                    class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
-                    <i class="bi bi-chat-dots me-3 fs-5"></i>
-                    <span>Forums</span>
-                </a>
-            </li>
-            <li class="mb-2">
-                <a href="#"
-                    class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
-                    <i class="bi bi-star me-3 fs-5"></i>
-                    <span>Favourite Post</span>
-                </a>
-            </li>
         </ul>
     </nav>
 
     <nav class="sticky-top bg-white py-2 px-3 border-bottom d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
             <i id="menu-btn" class="bi bi-list fs-2 text-dark" role="button"></i>
-            <a href="index.php" class="d-flex align-items-center text-decoration-none">
+            <a href="admin.php" class="d-flex align-items-center text-decoration-none">
                 <img src="/WebProject/website/assets/icon/home_octi.png" width="50" class="rounded-circle mx-2"
                     alt="Octi Home">
             </a>
         </div>
-        <div class="input-group w-50">
-            <span class="input-group-text bg-white border-end-0 rounded-start-pill">
-                <i class="bi bi-search"></i> </span>
-            <input type="text" class="form-control border-start-0 rounded-end-pill" placeholder="Value">
-        </div>
-
         <div class="d-flex align-items-center justify-content-end">
 
             <?php if(isset($_SESSION['userid'])): ?>
