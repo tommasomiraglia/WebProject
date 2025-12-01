@@ -104,3 +104,123 @@ function segnalaPost(postId) {
         })
         .catch(error => console.error('Error:', error));
 }
+
+function fetchSuggestions(searchTerm) {
+    const resultsContainer = document.getElementById('search-suggestions');
+    
+    // Evita di inviare richieste se il campo è vuoto
+    if (searchTerm.length < 2) {
+        if (resultsContainer) {
+            resultsContainer.innerHTML = ''; 
+            resultsContainer.style.display = 'none';
+        }
+        return;
+    }
+    
+    // Mostra il contenitore e un placeholder di caricamento
+    if (resultsContainer) {
+        resultsContainer.style.display = 'block';
+        resultsContainer.innerHTML = '<div class="p-2 text-center text-muted small">Caricamento...</div>';
+    }
+
+    // Effettua la richiesta Fetch all'API
+    fetch(`api-search-bar.php?q=${encodeURIComponent(searchTerm)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!resultsContainer) return; 
+            
+            let htmlContent = '';
+            
+            if (data.success && data.results && data.results.length > 0) {
+                
+                data.results.forEach(item => {
+                    if (item.type === 'group') { 
+                        // Costruisce l'URL usando l'ID del gruppo
+                        const link = `forum.php?id=${item.id}`; 
+                        
+                        // Il markup non include più l'immagine (<img>)
+                        htmlContent += `
+                            <a href="${link}" class="dropdown-item d-flex align-items-center p-2">
+                                <span class="bi bi-chat-dots me-2"></span> 
+                                <span class="fw-bold">${item.name}</span>
+                                <span class="text-muted small ms-auto">ID: ${item.id}</span>
+                            </a>
+                        `;
+                    }
+                });
+            } else {
+                htmlContent = `<div class="p-2 text-muted small">${data.message || 'Nessun risultato trovato.'}</div>`;
+            }
+
+            resultsContainer.innerHTML = htmlContent;
+        })
+        .catch(error => {
+            console.error('Errore durante la ricerca:', error);
+            if (resultsContainer) {
+                resultsContainer.innerHTML = '<div class="p-2 text-danger small">Errore di rete o del server.</div>';
+            }
+        });
+}
+
+
+// =========================================================
+// 2. LOGICA E LISTENER (Eseguiti dopo il caricamento del DOM)
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. SETUP SIDEBAR 
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+
+    if (menuBtn && sidebar && overlay) {
+        // Apri sidebar
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // Chiudi sidebar
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Chiudi sidebar cliccando sull'overlay
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    }
+
+    // Aggiungi effetto hover ai link
+    const links = document.querySelectorAll('#sidebar a');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', function () {
+            this.style.backgroundColor = '#f8f9fa';
+        });
+        link.addEventListener('mouseleave', function () {
+            this.style.backgroundColor = 'transparent';
+        });
+    });
+    
+    // 2. SETUP LIVE SEARCH LISTENERS (Risoluzione del ReferenceError)
+    const searchInput = document.getElementById('live-search-input');
+    const searchWrapper = document.getElementById('live-search-wrapper');
+    const resultsContainer = document.getElementById('search-suggestions');
+
+    if (searchInput) {
+        // ASSOCIAZIONE RISOLUTIVA: Avvia fetchSuggestions su keyup
+        searchInput.addEventListener('keyup', (event) => {
+            fetchSuggestions(event.target.value); 
+        });
+    }
+    
+    // Listener per nascondere i suggerimenti al click esterno
+    document.addEventListener('click', (event) => {
+        if (searchWrapper && resultsContainer && !searchWrapper.contains(event.target)) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+});

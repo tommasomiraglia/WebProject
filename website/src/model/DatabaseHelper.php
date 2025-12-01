@@ -308,4 +308,32 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    //SEARCH-BAR//
+    public function getLiveSearch($element){
+    $wildCard = "%" .$element ."%";
+    
+    // CORREZIONE: Aggiunti gli alias e i campi necessari per il JSON
+    $query = "SELECT
+                groupId AS id,         /* Il JS si aspetta 'id' */
+                name,
+                avatar AS avatar_url,  /* Il JS si aspetta 'avatar_url' */
+                'group' AS type        /* Il JS si aspetta 'type' con valore 'group' */
+              FROM GROUPS
+              WHERE name LIKE ?
+              LIMIT 5";
+
+    $stmt = $this->db->prepare($query);
+
+    // Bind del parametro
+    $stmt->bind_param("s", $wildCard);
+    
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    
+    // Restituisce un array associativo con i campi richiesti
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 }

@@ -57,11 +57,26 @@
                     alt="Octi Home">
             </a>
         </div>
-        <div class="input-group w-50">
-            <span class="input-group-text bg-white border-end-0 rounded-start-pill">
-                <i class="bi bi-search"></i> </span>
-            <input type="text" class="form-control border-start-0 rounded-end-pill" placeholder="Value">
-        </div>
+
+        <div id="live-search-wrapper" class="position-relative w-50"> 
+
+    <div class="input-group">
+        <span class="input-group-text bg-white border-end-0 rounded-start-pill">
+            <i class="bi bi-search"></i>
+        </span>
+    
+        <input type="text"
+           id="live-search-input"
+           class="form-control border-start-0 rounded-end-pill"
+           placeholder="Cerca gruppi...">
+    </div>
+
+    <div id="search-suggestions"
+        class="position-absolute bg-white shadow-lg border rounded mt-1"
+        style="z-index: 1050; width: 100%; display: none;">
+    </div>
+    
+</div>
 
         <div class="d-flex align-items-center justify-content-end">
 
