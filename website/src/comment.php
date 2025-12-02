@@ -32,7 +32,6 @@ if(empty($post)){
     $templateParams["post"] = $post;
 }
 
-// 5. RECUPERO COMMENTI
 $comments = $dbh->getCommentsByPostId($postId);
 
 if(empty($comments)){
