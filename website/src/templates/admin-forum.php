@@ -13,7 +13,7 @@
                             class="d-flex align-items-center text-decoration-none text-dark">
                             <img src="../<?php echo $forum["avatar"]?>" alt=""
                                 class="rounded-circle me-2 object-fit-cover" width="40" height="40" />
-                            p/<?php echo $forum["name"]?>
+                             <span class="fw-bold">p/<?php echo $forum["name"]?>
                         </a>
                         <div class="dropdown">
                             <button class="btn btn-link text-dark p-0" type="button" data-bs-toggle="dropdown"

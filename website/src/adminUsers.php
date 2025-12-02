@@ -7,8 +7,7 @@ $users= $dbh->getAllUsers();
 if(!empty($users)){
     $templateParams["users"] = $users;
 } else {
-    //EVENTALE REDIRECT A PAGINA DI ERRORE COMUNE//
-    $templateParams["error"] = "No users to show";
+    $templateParams["errore"] = "Nessun utente da mostrare.";
 }
 
 $templateParams["nome"] = "templates/admin-user.php";

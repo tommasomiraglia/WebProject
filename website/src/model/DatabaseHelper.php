@@ -293,6 +293,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function deleteUser($userId) {
+        $query = "DELETE FROM USERS WHERE userId = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        return $stmt->execute();
+    }
+
     //COMMENT//
     public function getPostById($postId, $viewerId){
         $query = "SELECT p.postId, p.title, p.longdescription, p.upvote, p.downvote, 

@@ -68,3 +68,45 @@ function deleteForum(forumId) {
             alert("Errore di connessione.");
         });
 }
+function deleteUser(userId) {
+    if (!confirm("Sei sicuro di voler bannare (eliminare) questo utente?")) {
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('action', 'delete_user');
+    formData.append('userId', userId);
+
+    fetch('/WebProject/website/src/api-admin-user.php', { 
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const riga = document.getElementById("user-row-" + userId);
+            
+            if (riga) {
+                riga.style.transition = "all 0.5s ease";
+                riga.style.opacity = "0";
+                riga.style.transform = "translateX(100px)"; 
+                
+                setTimeout(() => {
+                    riga.remove();
+                    const list = document.querySelector('ul.list-unstyled');
+                    if (list && list.children.length === 0) {
+                         list.innerHTML = '<div class="alert alert-info mt-3">Nessun utente trovato.</div>';
+                    }
+                }, 500);
+            } else {
+                location.reload();
+            }
+        } else {
+            alert("Errore: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Errore di connessione.");
+    });
+}
