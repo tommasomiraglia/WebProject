@@ -67,13 +67,13 @@ function votaPost(postId, isUpvote) {
                 }
                 else if (data.status === 'swapped') {
                     if (data.type === 'upvote') {
-                        upIcon.classList.add('text-primary', 'fw-bold'); 
-                        upSpan.innerText = upCount + 1;                 
-                        downSpan.innerText = Math.max(0, downCount - 1); 
+                        upIcon.classList.add('text-primary', 'fw-bold');
+                        upSpan.innerText = upCount + 1;
+                        downSpan.innerText = Math.max(0, downCount - 1);
                     } else {
-                        downIcon.classList.add('text-danger', 'fw-bold'); 
-                        downSpan.innerText = downCount + 1;               
-                        upSpan.innerText = Math.max(0, upCount - 1);      
+                        downIcon.classList.add('text-danger', 'fw-bold');
+                        downSpan.innerText = downCount + 1;
+                        upSpan.innerText = Math.max(0, upCount - 1);
                     }
                 }
             } else {
@@ -101,6 +101,7 @@ function segnalaPost(postId) {
         })
         .catch(error => console.error('Error:', error));
 }
+
 //SEARCH BAR
 function fetchSuggestions(searchTerm) {
     const resultsContainer = document.getElementById('search-suggestions');

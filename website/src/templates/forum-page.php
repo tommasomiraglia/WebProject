@@ -1,7 +1,6 @@
 <div class="bg-light">
     <div id="sidebar-overlay" class="sidebar-overlay"></div>
     <div class="container-sm py-3 custom-main-content">
-        <!--FORUM INFORMATION-->
         <div class="d-flex align-items-start mb-4">
             <div class="rounded-circle bg-warning flex-shrink-0 overflow-hidden" style="width: 60px; height: 60px;">
                 <img src="../<?php echo $templateParams["avatar"];?>" alt="Avatar" class="w-100 h-100 object-fit-cover">
@@ -17,28 +16,45 @@
             </div>
 
         </div>
+
         <div class="d-flex justify-content-between align-items-end mt-5">
             <div>
                 <div class="text-muted fs-5">Members:</div>
                 <div class="display-6 fw-normal"><?php echo $templateParams["memberCount"];?></div>
             </div>
 
-            <?php if(!Utils::isUserLoggedIn()):?>
-                <div class="d-flex gap-2">
-                    <a href="login.php" class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
-                        Log In to join the Group
-                    </a>
-                </div>
-            <?php else:?>
-                <form action="forum-action.php" method="POST">
-                    <div class="d-flex gap-2">
-                        <input type="hidden" name="groupId" value="<?php echo $templateParams["groupId"]?>"/>
-                        <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
-                            <?php echo $templateParams["textButton"];?>
-                        </button>
-                    </div>
+            <div class="d-flex gap-2 align-items-center">
+
+                <?php if(!Utils::isUserLoggedIn()): ?>
+                <a href="login.php" class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                    Log In to Join
+                </a>
+
+                <?php else: ?>
+                <?php 
+                        $isFollowing = $templateParams["isUserFollowing"] ?? false; 
+                    ?>
+                <?php if($isFollowing): ?>
+                <a href="upload.php?groupId=<?php echo $templateParams["groupId"]; ?>"
+                    class="btn btn-dark px-4 py-2 rounded-3">
+                    <i class="bi bi-plus-lg"></i> Create Post
+                </a>
+                <?php endif; ?>
+                <form action="forum-action.php" method="POST" class="m-0">
+                    <input type="hidden" name="groupId" value="<?php echo $templateParams["groupId"]?>" />
+
+                    <?php if($isFollowing): ?>
+                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #757575;">
+                        Leave
+                    </button>
+                    <?php else: ?>
+                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                        Join
+                    </button>
+                    <?php endif; ?>
                 </form>
-            <?php endif;?>
+                <?php endif; ?>
+            </div>
         </div>
         <!--FORUM POST-->
         <hr class="my-4">
@@ -117,8 +133,9 @@
                                 </button>
 
                             </div>
-                            <a href="comment.php?postId=<?php echo $post["postId"]?>" class="btn btn-light btn-sm rounded-pill align-items-center gap-1">
-                            <i class="bi bi-chat-left-text-fill"></i> Comments</a>
+                            <a href="comment.php?postId=<?php echo $post["postId"]?>"
+                                class="btn btn-light btn-sm rounded-pill align-items-center gap-1">
+                                <i class="bi bi-chat-left-text-fill"></i> Comments</a>
                         </div>
 
                         <div class="dropup">

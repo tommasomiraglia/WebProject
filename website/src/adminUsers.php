@@ -7,11 +7,10 @@ $users= $dbh->getAllUsers();
 if(!empty($users)){
     $templateParams["users"] = $users;
 } else {
-    //EVENTALE REDIRECT A PAGINA DI ERRORE COMUNE//
-    $templateParams["error"] = "Bravo CiccioGamer89 hai censurato tutti";
+    $templateParams["errore"] = "Nessun utente da mostrare.";
 }
 
 $templateParams["nome"] = "templates/admin-user.php";
 $templateParams["titolo"] = "PoliHub - Gestione Utenti";
 
-require_once __DIR__ ."/templates/base.php";
+require_once __DIR__ ."/templates/base-admin.php";
