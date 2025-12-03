@@ -150,12 +150,36 @@ function fetchSuggestions(searchTerm) {
         });
 }
 
+function handleImagePreview(event) {
+    const file = event.target.files[0];
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+            uploadPlaceholder.style.display = 'none';
+        };
+        
+        reader.readAsDataURL(file);
+    } else {
+        // Ripristina la visualizzazione se l'utente annulla la selezione
+        imagePreview.style.display = 'none';
+        imagePreview.src = '#';
+        uploadPlaceholder.style.display = 'block';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebar-overlay');
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
+    const fileInput = document.getElementById('postImageInput');
 
     if (menuBtn && sidebar && overlay) {
         menuBtn.addEventListener('click', () => {
@@ -194,6 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    document.addEventListener('click', (event) => {
+        if (searchWrapper && resultsContainer && !searchWrapper.contains(event.target)) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+
+    if (fileInput) {
+        fileInput.addEventListener('change', handleImagePreview);
+    }
     document.addEventListener('click', (event) => {
         if (searchWrapper && resultsContainer && !searchWrapper.contains(event.target)) {
             resultsContainer.style.display = 'none';

@@ -31,7 +31,7 @@
                 </a>
 
                 <?php else: ?>
-                <?php 
+                <?php
                         $isFollowing = $templateParams["isUserFollowing"] ?? false; 
                     ?>
                 <?php if($isFollowing): ?>
@@ -104,7 +104,7 @@
 
                     <?php if($postImg !== null): ?>
                     <figure class="mb-3">
-                        <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                        <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post">
                     </figure>
                     <?php endif; ?>
 

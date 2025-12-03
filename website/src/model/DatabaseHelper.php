@@ -362,6 +362,14 @@ class DatabaseHelper {
     
     // Restituisce un array associativo con i campi richiesti
     return $result->fetch_all(MYSQLI_ASSOC);
-}
+    }
+
+    //UPLOAD POST//
+    public function uploadPost($userId, $groupId, $title, $longdescription, $postImage){
+        $query = "INSERT INTO POSTS (title, longdescription, postImage, groupId, userId) VALUES (? , ? , ? , ? , ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sssii" , $title, $longdescription, $postImage, $userId, $groupId);
+        $stmt->execute();
+    }
 
 }

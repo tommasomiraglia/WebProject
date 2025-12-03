@@ -55,13 +55,6 @@ body {
     border-color: #7a1f1f;
     color: white;
 }
-
-/* Classe per limitare la larghezza del form e centrarlo (simulazione mobile) */
-.form-container-mobile {
-    max-width: 400px;
-    width: 95%;
-}
-
 /* Classe per dimensionare l'immagine del polipo */
 .logo-upload-size {
     max-width: 40px;
