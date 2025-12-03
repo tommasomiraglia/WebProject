@@ -16,9 +16,9 @@
                     <form action="<?php echo $action_url;?>" method="POST" enctype="multipart/form-data">
 
                         <div class="d-flex justify-content-center my-5">
-                            <input type="file" id="postImageInput" name="postImage" accept="image/*" class="d-none" />
+                            <input type="file" id="imageInput" name="postImage" accept="image/*" class="d-none" />
 
-                            <label for="postImageInput" class="text-center" style="cursor: pointer;">
+                            <label for="imageInput" class="text-center" style="cursor: pointer;">
         
                         <div id="uploadPlaceholder">
                             <i class="bi bi-cloud-arrow-up text-secondary" style="font-size: 8rem;"></i>

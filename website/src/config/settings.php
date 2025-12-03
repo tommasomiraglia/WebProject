@@ -9,6 +9,7 @@ class Settings {
     public const UPLOAD_POST_DIR = "/assets/post/";
     public const UPLOAD_AVATAR_DIR = "/assets/avatar/";
     public const ABSOLUTE_UPLOAD_POST_DIR = __DIR__ . "/../../assets/post/";
+    public const ABSOLUTE_UPLOAD_AVATAR_DIR = __DIR__ . "/../../assets/avatar/";
     
     // Configurazioni DB
     public const DB_SERVERNAME = "localhost";

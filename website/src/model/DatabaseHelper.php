@@ -90,8 +90,8 @@ class DatabaseHelper {
         return $result->num_rows === 0;
     }
 
-    public function addUser($username,$email,$password,$gender,$typology = "user"){
-        $query = "INSERT INTO USERS(username, email, password, gender , typology) VALUES (?,?,?,?,?)";
+    public function addUser($username,$email,$password,$gender,$avatar,$description, $typology = "user"){
+        $query = "INSERT INTO USERS(username, email, password,description, avatar, gender , typology) VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
     
         if (!$stmt) {
@@ -99,7 +99,7 @@ class DatabaseHelper {
             return false;
         }
     
-        $stmt->bind_param("sssss", $username, $email, $password, $gender, $typology);
+        $stmt->bind_param("sssssss", $username, $email, $password,$description,$avatar, $gender, $typology);
     
         if (!$stmt->execute()) {
             error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
@@ -368,7 +368,7 @@ class DatabaseHelper {
     public function uploadPost($userId, $groupId, $title, $longdescription, $postImage){
         $query = "INSERT INTO POSTS (title, longdescription, postImage, groupId, userId) VALUES (? , ? , ? , ? , ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sssii" , $title, $longdescription, $postImage, $userId, $groupId);
+        $stmt->bind_param("sssii" , $title, $longdescription, $postImage, $groupId, $userId);
         $stmt->execute();
     }
 

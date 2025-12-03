@@ -7,11 +7,11 @@ $templateParams["titolo"] = "PoliHub - Upload";
 $groupId = -1;
 
 if(isset($_GET["groupId"])){
-    $groupId = $_GET["groupId"];
+    $groupId = (int)$_GET["groupId"];
 }
 
 if(isset($_POST["groupId"])){
-    $groupId = $_POST["groupId"];
+    $groupId = (int)$_POST["groupId"];
 }
 
 if(Utils::isUserLoggedIn() && $_SERVER['REQUEST_METHOD'] === 'POST') {

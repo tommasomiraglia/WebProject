@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('sidebar-overlay');
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
-    const fileInput = document.getElementById('postImageInput');
+    const fileInput = document.getElementById('imageInput');
 
     if (menuBtn && sidebar && overlay) {
         menuBtn.addEventListener('click', () => {
