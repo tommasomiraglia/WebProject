@@ -21,27 +21,33 @@
                 }
             ?>
 
-            <div class="card story-card rounded-4 text-white border-0 flex-grow-1"
-                style="background-image: url('../<?php echo $bgImage; ?>'); height: 200px; background-size: cover; background-position: center; position: relative;">
+            <div class="card story-card rounded-4 text-white border-0" style="background-image: url('../<?php echo $bgImage; ?>'); 
+                       aspect-ratio: 1 / 1; 
+                       min-width: 150px; 
+                       width: 18vw; 
+                       background-size: cover; 
+                       background-position: center; 
+                       position: relative;">
 
                 <div
                     style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); border-radius: inherit;">
                 </div>
 
                 <div class="card-body d-flex align-items-end" style="position: relative; z-index: 2;">
-                    <header class="d-flex align-items-center" style="position: absolute; bottom: 15px; left: 15px;">
-
-                        <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="30" height="30"
-                            alt="Avatar">
-
-                        <div>
-                            <h6 class="mb-0 fw-bold">
+                    <header class="d-flex align-items-center w-100 pe-3"
+                        style="position: absolute; bottom: 15px; left: 15px;">
+                        <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2 flex-shrink-0" width="30"
+                            height="30" alt="Avatar">
+                        <div class="overflow-hidden flex-grow-1">
+                            <h6 class="mb-0 fw-bold text-truncate">
                                 <a href="forum.php?id=<?php echo $storia['groupId']; ?>"
                                     class="text-decoration-none text-white">
                                     p/<?php echo htmlspecialchars($storia['name']); ?>
                                 </a>
                             </h6>
-                            <small class="text-white-60"><?php echo htmlspecialchars($titolo); ?></small>
+                            <small class="text-white-60 d-block text-truncate">
+                                <?php echo htmlspecialchars($titolo); ?>
+                            </small>
                         </div>
                     </header>
                 </div>

@@ -22,7 +22,7 @@
         
                         <div id="uploadPlaceholder">
                             <i class="bi bi-cloud-arrow-up text-secondary" style="font-size: 8rem;"></i>
-                            <p class="text-secondary mt-2">Clicca qui per scegliere un file</p>
+                            <p class="text-secondary mt-2">Click here to choose a file</p>
                         </div>
         
                         <img id="imagePreview" src="#" alt="Anteprima post"
@@ -45,10 +45,6 @@
                         </div>
 
                         <div class="d-grid gap-2 px-4 pb-4">
-                            <div class="d-flex justify-content-center mb-3">
-                                <img src="../assets/icon/form_octi.png" class="logo-upload-size" alt="Form icon" />
-                            </div>
-
                             <button type="submit" class="btn btn-custom-red rounded-pill py-2">Upload</button>
                         </div>
 

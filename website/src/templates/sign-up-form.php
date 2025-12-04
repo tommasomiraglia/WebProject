@@ -20,7 +20,7 @@
                         style="width: 150px; height: 150px; border: 2px dashed #6c757d; background-color: #f8f9fa; position: relative;">
             
                         <div id="uploadPlaceholder" class="text-secondary text-center">
-                            <i class="bi bi-person-circle" style="font-size: 4rem;"></i> <p class="small mb-0 mt-1">Scegli immagine</p>
+                            <i class="bi bi-person-circle" style="font-size: 4rem;"></i> <p class="small mb-0 mt-1">Choose image</p>
                         </div>
 
                         <img id="imagePreview" src="#" alt="Anteprima profilo"

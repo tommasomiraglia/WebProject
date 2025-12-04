@@ -68,7 +68,7 @@
         <input type="text"
            id="live-search-input"
            class="form-control border-start-0 rounded-end-pill"
-           placeholder="Cerca gruppi...">
+           placeholder="Search groups...">
     </div>
 
     <div id="search-suggestions"
