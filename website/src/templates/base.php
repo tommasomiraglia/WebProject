@@ -33,14 +33,14 @@
             </li>
             <hr class="my-4">
             <li class="mb-2">
-                <a href="#"
+                <a href="favorite.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
                     <i class="bi bi-chat-dots me-3 fs-5"></i>
-                    <span>Forums</span>
+                    <span>Joined Forums</span>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#"
+                <a href="likes.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
                     <i class="bi bi-star me-3 fs-5"></i>
                     <span>Favourite Post</span>
@@ -53,7 +53,7 @@
         <div class="d-flex align-items-center">
             <i id="menu-btn" class="bi bi-list fs-2 text-dark" role="button"></i>
             <a href="index.php" class="d-flex align-items-center text-decoration-none">
-                <img src="/WebProject/website/assets/icon/home_octi.png" width="50" class="rounded-circle mx-2"
+                <img src="/WebProject/website/assets/icon/octopus.png" width="50" class="rounded-circle mx-2"
                     alt="Octi Home">
             </a>
         </div>

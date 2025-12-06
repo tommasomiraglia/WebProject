@@ -62,7 +62,7 @@
         <div class="d-flex align-items-center">
             <i id="menu-btn" class="bi bi-list fs-2 text-dark" role="button"></i>
             <a href="admin.php" class="d-flex align-items-center text-decoration-none">
-                <img src="/WebProject/website/assets/icon/home_octi.png" width="50" class="rounded-circle mx-2"
+                <img src="/WebProject/website/assets/icon/octopus.png" width="50" class="rounded-circle mx-2"
                     alt="Octi Home">
             </a>
         </div>

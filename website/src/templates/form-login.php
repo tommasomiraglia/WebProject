@@ -32,10 +32,6 @@
                             class="card-link text-muted text-decoration-underscore">Sign Up</a></p>
                 </div>
             </div>
-            <div class="mt-3">
-                <img src="../assets/icon/upload_octi.png" class="img-fluid d-block mx-auto logo-form-size"
-                    alt="Form icon" />
-            </div>
         </div>
     </div>
 </main>
