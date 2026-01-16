@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -58,25 +58,22 @@
             </a>
         </div>
 
-        <div id="live-search-wrapper" class="position-relative w-50"> 
+        <div id="live-search-wrapper" class="position-relative w-50">
 
-    <div class="input-group">
-        <span class="input-group-text bg-white border-end-0 rounded-start-pill">
-            <i class="bi bi-search"></i>
-        </span>
-    
-        <input type="text"
-           id="live-search-input"
-           class="form-control border-start-0 rounded-end-pill"
-           placeholder="Search groups...">
-    </div>
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 rounded-start-pill">
+                    <i class="bi bi-search"></i>
+                </span>
+                <label for="live-search-input" class="visually-hidden">Search groups</label>
+                <input type="text" id="live-search-input" class="form-control border-start-0 rounded-end-pill"
+                    placeholder="Search groups...">
+            </div>
 
-    <div id="search-suggestions"
-        class="position-absolute bg-white shadow-lg border rounded mt-1"
-        style="z-index: 1050; width: 100%; display: none;">
-    </div>
-    
-</div>
+            <div id="search-suggestions" class="position-absolute bg-white shadow-lg border rounded mt-1"
+                style="z-index: 1050; width: 100%; display: none;">
+            </div>
+
+        </div>
 
         <div class="d-flex align-items-center justify-content-end">
 
@@ -85,8 +82,8 @@
             <?php 
         $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/avatar/avatar0.jpg'; ?>
             <a href="user.php?userId=<?php echo $_SESSION['userid']?>" class="text-decoration-none me-2">
-                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45"
-                    height="45" alt="My Profile" style="object-fit: cover;">
+                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45" height="45"
+                    alt="My Profile" style="object-fit: cover;">
             </a>
 
             <?php else: ?>
@@ -97,7 +94,7 @@
 
             <div class="dropdown">
                 <button class="btn btn-link text-dark p-0 flex-shrink-0" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                    aria-expanded="false" aria-label="More options">
                     <i class="bi bi-three-dots-vertical fs-4"></i>
                 </button>
 
@@ -109,7 +106,8 @@
                             <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
                     </li>
                     <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="user.php?userId=<?php echo $_SESSION['userid']?>">
+                        <a class="dropdown-item d-flex align-items-center py-2"
+                            href="user.php?userId=<?php echo $_SESSION['userid']?>">
                             <i class="bi bi-person fs-5 me-3"></i>
                             <span>My Profile</span>
                         </a>
@@ -160,35 +158,36 @@
         ?>
     </div>
 
-    <div class="modal fade" id="cookieModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5 fw-bold">Cookie Preferences</h1>
+                    <h1 class="modal-title fs-5 fw-bold" id="cookieModalLabel">Cookie Preferences</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <p class="text-muted small">Manage your tracking preferences.</p>
+                    <p class="text-secondary-emphasis small fw-medium">Manage your tracking preferences.</p>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <span class="fw-bold d-block">Essentials</span>
-                            <small class="text-muted">Necessary for operation</small>
+                            <label class="fw-bold d-block" for="switch-essentials">Essentials</label>
+                            <small class="text-secondary-emphasis">Necessary for operation</small>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" checked disabled>
+                            <input class="form-check-input" type="checkbox" role="switch" id="switch-essentials" checked
+                                disabled>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <span class="fw-bold d-block">Analytics</span>
-                            <small class="text-muted">Usage statistics</small>
+                            <label class="fw-bold d-block" for="switch-analytics">Analytics</label>
+                            <small class="text-secondary-emphasis">Usage statistics</small>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                            <input class="form-check-input" type="checkbox" role="switch" id="switch-analytics" checked>
                         </div>
                     </div>
 

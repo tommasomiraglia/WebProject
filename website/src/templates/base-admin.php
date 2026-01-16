@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/WebProject/website/css/style.css">
     <script src="/WebProject/website/js/script.js" defer></script>
     <script src="/WebProject/website/js/admin.js" defer></script>
-    
+
 </head>
 
 <body class="bg-light">
@@ -33,7 +33,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-           <hr class="my-4">
+            <hr class="my-4">
             <li class="mb-2">
                 <a href="adminReport.php"
                     class="d-flex align-items-center text-decoration-none text-dark py-2 px-3 rounded hover-bg-light">
@@ -73,8 +73,8 @@
             <?php 
         $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/avatar/avatar0.jpg'; ?>
             <a class="text-decoration-none me-2">
-                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45"
-                    height="45" alt="My Profile" style="object-fit: cover;">
+                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45" height="45"
+                    alt="My Profile" style="object-fit: cover;">
             </a>
 
             <?php else: ?>
@@ -142,35 +142,36 @@
         ?>
     </div>
 
-    <div class="modal fade" id="cookieModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5 fw-bold">Cookie Preferences</h1>
+                    <h1 class="modal-title fs-5 fw-bold" id="cookieModalLabel">Cookie Preferences</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <p class="text-muted small">Manage your tracking preferences.</p>
+                    <p class="text-secondary-emphasis small fw-medium">Manage your tracking preferences.</p>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <span class="fw-bold d-block">Essentials</span>
-                            <small class="text-muted">Necessary for operation</small>
+                            <label class="fw-bold d-block" for="switch-essentials">Essentials</label>
+                            <small class="text-secondary-emphasis">Necessary for operation</small>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" checked disabled>
+                            <input class="form-check-input" type="checkbox" role="switch" id="switch-essentials" checked
+                                disabled>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <span class="fw-bold d-block">Analytics</span>
-                            <small class="text-muted">Usage statistics</small>
+                            <label class="fw-bold d-block" for="switch-analytics">Analytics</label>
+                            <small class="text-secondary-emphasis">Usage statistics</small>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" checked>
+                            <input class="form-check-input" type="checkbox" role="switch" id="switch-analytics" checked>
                         </div>
                     </div>
 

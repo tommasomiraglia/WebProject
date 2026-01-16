@@ -21,31 +21,37 @@
                 }
             ?>
 
-            <div class="card story-card rounded-4 text-white border-0" style="background-image: url('../<?php echo $bgImage; ?>'); 
-                       aspect-ratio: 1 / 1; 
-                       min-width: 150px; 
-                       width: 18vw; 
-                       background-size: cover; 
-                       background-position: center; 
-                       position: relative;">
+            <div class="card story-card rounded-4 text-white border-0 bg-dark" style="background-image: url('../<?php echo $bgImage; ?>'); 
+            background-color: #212529; /* Forza il colore scuro se l'immagine non carica */
+            aspect-ratio: 1 / 1; 
+            min-width: 150px; 
+            width: 18vw; 
+            background-size: cover; 
+            background-position: center; 
+            position: relative;">
 
-                <div
-                    style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); border-radius: inherit;">
+                <div style="position: absolute; top:0; left:0; right:0; bottom:0; 
+                background: rgba(0, 0, 0, 0.4); /* Overlay scuro uniforme */
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%); 
+                border-radius: inherit;">
                 </div>
 
                 <div class="card-body d-flex align-items-end" style="position: relative; z-index: 2;">
                     <header class="d-flex align-items-center w-100 pe-3"
                         style="position: absolute; bottom: 15px; left: 15px;">
+
                         <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2 flex-shrink-0" width="30"
-                            height="30" alt="Avatar">
+                            height="30" alt="Logo del gruppo <?php echo htmlspecialchars($storia['name']); ?>">
+
                         <div class="overflow-hidden flex-grow-1">
                             <h6 class="mb-0 fw-bold text-truncate">
                                 <a href="forum.php?id=<?php echo $storia['groupId']; ?>"
-                                    class="text-decoration-none text-white">
+                                    class="text-decoration-none text-white shadow-sm">
                                     p/<?php echo htmlspecialchars($storia['name']); ?>
                                 </a>
                             </h6>
-                            <small class="text-white-60 d-block text-truncate">
+
+                            <small class="text-light d-block text-truncate" style="opacity: 0.9;">
                                 <?php echo htmlspecialchars($titolo); ?>
                             </small>
                         </div>
