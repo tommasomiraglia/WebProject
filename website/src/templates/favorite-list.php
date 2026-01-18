@@ -35,12 +35,12 @@
                     </div>
 
                     <div class="flex-grow-1 ms-3 overflow-hidden">
-                        <h5 class="card-title fw-bold mb-1 text-truncate">
+                        <h3 class="card-title h5 fw-bold mb-1 text-truncate">
                             <a href="forum.php?id=<?php echo $forum['groupId']; ?>"
                                 class="text-decoration-none text-dark stretched-link">
                                 p/<?php echo htmlspecialchars($forum['name']); ?>
                             </a>
-                        </h5>
+                        </h3>
 
                         <p class="card-text text-muted small text-truncate mb-0">
                             <?php echo htmlspecialchars($forum['longdescription']); ?>

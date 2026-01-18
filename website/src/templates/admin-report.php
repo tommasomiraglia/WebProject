@@ -22,7 +22,7 @@
             <div class="card-body">
 
                 <header class="d-flex align-items-center mb-2">
-                    <img src="../<?php echo $avatar;?>" class="rounded-circle me-2" width="40" height="40" alt="Avatar"
+                    <img src="../<?php echo $avatar;?>" class="rounded-circle me-2" width="40" height="40" alt=""
                         style="object-fit: cover;">
                     <div>
                         <h6 class="mb-0 fw-bold">
@@ -40,7 +40,7 @@
 
                 <?php if(!empty($postImg)): ?>
                 <figure class="mb-3">
-                    <img src="../<?php echo $postImg;?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                    <img src="../<?php echo $postImg;?>" class="img-fluid rounded-3 w-100" alt="Immage releted to: <?php echo htmlspecialchars($post['title']); ?>">
                 </figure>
                 <?php endif; ?>
 

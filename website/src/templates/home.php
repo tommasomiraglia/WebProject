@@ -84,7 +84,7 @@
 
             <header class="d-flex align-items-center mb-2">
                 <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
-                    alt="Avatar">
+                    alt="Avatar of <?php echo htmlspecialchars($post['username']); ?>">
                 <div>
                     <h6 class="mb-0 fw-bold">
                         <a href="forum.php?id=<?php echo $post['groupId']; ?>" class="text-decoration-none text-dark">
@@ -101,7 +101,7 @@
 
             <?php if(!empty($postImg)): ?>
             <figure class="mb-3">
-                <img src="../<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                <img src="../<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Immage releted to: <?php echo htmlspecialchars($post['title']); ?>">
             </figure>
             <?php endif; ?>
 

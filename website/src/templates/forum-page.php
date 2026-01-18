@@ -3,7 +3,7 @@
     <div class="container-sm py-3 custom-main-content">
         <div class="d-flex align-items-start mb-4">
             <div class="rounded-circle bg-warning flex-shrink-0 overflow-hidden" style="width: 60px; height: 60px;">
-                <img src="../<?php echo $templateParams["avatar"];?>" alt="Avatar" class="w-100 h-100 object-fit-cover">
+                <img src="../<?php echo $templateParams["avatar"];?>" alt="" class="w-100 h-100 object-fit-cover">
             </div>
 
             <div class="ms-3 w-100">
@@ -86,7 +86,7 @@
 
                     <header class="d-flex align-items-center mb-2">
                         <img src="<?php echo $userAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
-                            alt="Avatar" style="object-fit: cover;">
+                            alt="" style="object-fit: cover;">
                         <div>
                             <h6 class="mb-0 fw-bold">
                                 <a href="user.php?id=<?php echo $post['userId']; ?>"
@@ -104,7 +104,7 @@
 
                     <?php if($postImg !== null): ?>
                     <figure class="mb-3">
-                        <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post">
+                        <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Visual content of the post: <?php echo htmlspecialchars($post['title']); ?>">
                     </figure>
                     <?php endif; ?>
 

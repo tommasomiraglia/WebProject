@@ -17,7 +17,7 @@
                     <div class="card-body d-flex justify-content-between align-items-center">
 
                         <a class="d-flex align-items-center text-decoration-none text-dark">
-                            <img src="../<?php echo $avatarPath; ?>" alt="User Avatar"
+                            <img src="../<?php echo $avatarPath; ?>" alt="Avatar of <?php echo htmlspecialchars($user['username']); ?>"
                                 class="rounded-circle me-2 object-fit-cover" width="40" height="40" />
                             <span class="fw-bold">u/<?php echo $user["username"];?></span>
                         </a>

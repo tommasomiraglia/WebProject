@@ -6,7 +6,7 @@
         }
         ?>
         <div class="rounded-circle bg-warning flex-shrink-0 overflow-hidden" style="width: 60px; height: 60px;">
-            <img src="<?php echo $imgProfilo; ?>" alt="Avatar" class="w-100 h-100 object-fit-cover"
+            <img src="<?php echo $imgProfilo; ?>" alt="" class="w-100 h-100 object-fit-cover"
                 onerror="this.src='../assets/avatar/avatar0.jpg';">
         </div>
         <div class="ms-3 w-100">
@@ -50,7 +50,7 @@
 
                 <header class="d-flex align-items-center mb-2">
                     <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
-                        alt="Group Icon">
+                        alt="Community: <?php echo htmlspecialchars($post['groupName']); ?>">
                     <div>
                         <h6 class="mb-0 fw-bold">
                             <a href="forum.php?id=<?php echo $post['groupId']; ?>"
@@ -68,11 +68,11 @@
 
                 <?php if($postImg !== null && file_exists(str_replace('../', '', $postImg))): ?>
                 <figure class="mb-3">
-                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Immage releted to: <?php echo htmlspecialchars($post['title']); ?>">
                 </figure>
                 <?php elseif($postImg !== null): ?>
                 <figure class="mb-3">
-                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Immage releted to: <?php echo htmlspecialchars($post['title']); ?>">
                 </figure>
                 <?php endif; ?>
 

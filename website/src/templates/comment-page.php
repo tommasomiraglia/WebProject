@@ -31,8 +31,8 @@
         <article class="card rounded-4 border shadow-sm">
             <div class="card-body">
                 <header class="d-flex align-items-center mb-2">
-                    <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
-                        alt="Avatar" onerror="this.src='../assets/avatar/avatar0.jpg';">
+                    <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40" alt=""
+                        onerror="this.src='../assets/avatar/avatar0.jpg';">
                     <div>
                         <h6 class="mb-0 fw-bold">
                             <a href="forum.php?id=<?php echo $post['groupId']; ?>"
@@ -60,7 +60,8 @@
                 <h5 class="card-title fw-bold"><?php echo htmlspecialchars($post['title']); ?></h5>
                 <?php if($postImg !== null): ?>
                 <figure class="mb-3">
-                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100" alt="Post Image">
+                    <img src="<?php echo $postImg; ?>" class="img-fluid rounded-3 w-100"
+                        alt="Immage releted to: <?php echo htmlspecialchars($post['title']); ?>">
                 </figure>
                 <?php endif; ?>
                 <p class="card-text">
@@ -93,7 +94,7 @@
 
                     <div class="dropup">
                         <button class="btn btn-light btn-sm border-0" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            aria-expanded="false" aria-label="Other option">
                             <i class="bi bi-three-dots"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -125,7 +126,7 @@
 
                     <div class="w-100">
                         <textarea class="form-control rounded-4 bg-light border-0" name="testoCommento" rows="2"
-                            placeholder="What are your thoughts?" required></textarea>
+                            placeholder="What are your thoughts?" aria-label="Scrivi un commento" required></textarea>
                         <div class="text-end mt-2">
                             <button type="submit" class="btn btn-dark rounded-pill px-4 fw-bold">Reply</button>
                         </div>
@@ -164,12 +165,12 @@
             }
         ?>
         <div class="d-flex align-items-start gap-2 mb-3">
-            <img src="<?php echo $commAvatar; ?>" class="rounded-circle flex-shrink-0" width="40" height="40"
-                alt="Avatar" style="object-fit: cover;" onerror="this.src='../assets/avatar/avatar0.jpg';">
+            <img src="<?php echo $commAvatar; ?>" class="rounded-circle flex-shrink-0" width="40" height="40" alt=""
+                style="object-fit: cover;" onerror="this.src='../assets/avatar/avatar0.jpg';">
 
             <div class="bg-light p-3 rounded-4 w-100 border">
                 <div class="d-flex justify-content-between align-items-center mb-1">
-                    <a href="user.php?id=<?php echo $comment['userId']; ?>"
+                    <a href="user.php?id=<?php echo $comment['userId']; ?>&c=<?php echo $comment['commentId']; ?>"
                         class="fw-bold text-dark text-decoration-none small">
                         <?php echo htmlspecialchars($comment["username"]); ?>
                     </a>

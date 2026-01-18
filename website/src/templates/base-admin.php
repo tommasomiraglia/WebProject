@@ -85,52 +85,51 @@
 
             <div class="dropdown">
                 <button class="btn btn-link text-dark p-0 flex-shrink-0" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical fs-4"></i>
+                    aria-expanded="false" aria-label="Open options menu"> <i class="bi bi-three-dots-vertical fs-4"></i>
                 </button>
 
-                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3" style="min-width: 250px;">
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3" style="min-width: 250px;">
 
-                    <?php if(isset($_SESSION['userid'])): ?>
-                    <li>
-                        <h6 class="dropdown-header">Hi,
-                            <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="#" data-bs-toggle="modal"
-                            data-bs-target="#cookieModal">
-                            <i class="bi bi-wrench fs-5 me-3"></i>
-                            <span>Cookies Preferences</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center py-2 text-danger fw-bold" href="logout.php">
-                            <i class="bi bi-box-arrow-right fs-5 me-3"></i>
-                            <span>Exit</span>
-                        </a>
-                    </li>
+                <?php if(isset($_SESSION['userid'])): ?>
+                <li>
+                    <h6 class="dropdown-header">Hi,
+                        <?php echo htmlspecialchars($_SESSION['username'] ?? 'User'); ?>!</h6>
+                </li>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center py-2" href="#" data-bs-toggle="modal"
+                        data-bs-target="#cookieModal">
+                        <i class="bi bi-wrench fs-5 me-3"></i>
+                        <span>Cookies Preferences</span>
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center py-2 text-danger fw-bold" href="logout.php">
+                        <i class="bi bi-box-arrow-right fs-5 me-3"></i>
+                        <span>Exit</span>
+                    </a>
+                </li>
 
-                    <?php else: ?>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="login.php">
-                            <i class="bi bi-person-plus fs-5 me-3"></i>
-                            <span>Login / Sign Up</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center py-2" href="#" data-bs-toggle="modal"
-                            data-bs-target="#cookieModal">
-                            <i class="bi bi-wrench fs-5 me-3"></i>
-                            <span>Cookies Preferences</span>
-                        </a>
-                    </li>
-                    <?php endif; ?>
+                <?php else: ?>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center py-2" href="login.php">
+                        <i class="bi bi-person-plus fs-5 me-3"></i>
+                        <span>Login / Sign Up</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center py-2" href="#" data-bs-toggle="modal"
+                        data-bs-target="#cookieModal">
+                        <i class="bi bi-wrench fs-5 me-3"></i>
+                        <span>Cookies Preferences</span>
+                    </a>
+                </li>
+                <?php endif; ?>
 
-                </ul>
-            </div>
+            </ul>
+        </div>
         </div>
     </nav>
 
