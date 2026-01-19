@@ -81,12 +81,10 @@
 
             <?php 
         $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/avatar/avatar0.jpg'; ?>
-            <button class="btn btn-link p-0 border-0 me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                aria-label="Menu profilo di <?php echo htmlspecialchars($_SESSION['username'] ?? 'Utente'); ?>">
-
-                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45" height="45" alt=""
-                    style="object-fit: cover;">
-            </button>
+            <a href="user.php?userId=<?php echo $_SESSION['userid']?>" class="text-decoration-none me-2">
+                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45" height="45"
+                    alt="My Profile" style="object-fit: cover;">
+            </a>
             <?php else: ?>
             <a class="btn btn-dark rounded-pill text-nowrap flex-shrink-0 me-2" href="login.php">Log In</a>
 
