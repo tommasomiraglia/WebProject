@@ -138,6 +138,7 @@ body {
 .user-icon {
     width: 40px;
     height: 40px;
+    object-fit: cover;
 }
 
 /*SIDE BAR*/
@@ -174,3 +175,52 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
+/*FORUM BUTTON*/
+.btn-join{
+    background-color: #8B3635;
+}
+
+.btn-following {
+    background-color: #757575;
+}
+
+/* SIGN-UP FORM*/
+#img-upload {
+    width: 150px; 
+    height: 150px; 
+    border: 2px dashed #6c757d; 
+    background-color: #f8f9fa; 
+    position: relative;
+}
+
+#placeholderText {
+    font-size: 4rem;
+}
+
+#imgPreview , .login {
+    display: none;
+}
+
+.btn-login{
+    color: #595959 !important
+}
+
+/*UPLOAD FORM*/
+
+.imageInput {
+    cursor:pointer;
+}
+
+.post-preview{
+    max-width: 100%;
+    height: auto; 
+    display: none;
+}
+
+/* USER PAGE */
+
+ .user-page-icon {
+    width: 60px; 
+    height: 60px;
+ }

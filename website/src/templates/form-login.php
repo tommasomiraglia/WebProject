@@ -5,7 +5,7 @@
             <div class="card p-4 shadow-lg rounded-4">
                 <!--ELEMENTO COME CARD = CARD-->
                 <div class="card-body">
-                    <h2 class="text-center mb-4 card-title fw-bold" style="display:none;">Login</h2>
+                    <h2 class="text-center mb-4 card-title fw-bold login">Login</h2>
                     <form action="#" method="POST">
                         <?php if(isset($templateParams["errorelogin"])): ?>
                         <div class="alert alert-danger" role="alert">

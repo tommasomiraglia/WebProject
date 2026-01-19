@@ -31,7 +31,7 @@
         <article class="card rounded-4 border shadow-sm">
             <div class="card-body">
                 <header class="d-flex align-items-center mb-2">
-                    <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40" alt=""
+                    <img src="<?php echo $groupAvatar; ?>" class="rounded-circle me-2 group-avatar" alt=""
                         onerror="this.src='../assets/avatar/avatar0.jpg';">
                     <div>
                         <h6 class="mb-0 fw-bold">
@@ -165,8 +165,8 @@
             }
         ?>
         <div class="d-flex align-items-start gap-2 mb-3">
-            <img src="<?php echo $commAvatar; ?>" class="rounded-circle flex-shrink-0" width="40" height="40" alt=""
-                style="object-fit: cover;" onerror="this.src='../assets/avatar/avatar0.jpg';">
+            <img src="<?php echo $commAvatar; ?>" class="rounded-circle flex-shrink-0 user-icon" alt="Profilo Utente" 
+            onerror="this.src='../assets/avatar/avatar0.jpg';">
 
             <div class="bg-light p-3 rounded-4 w-100 border">
                 <div class="d-flex justify-content-between align-items-center mb-1">

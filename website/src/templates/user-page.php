@@ -5,7 +5,7 @@
             $imgProfilo = '../' . $templateParams["avatar"];
         }
         ?>
-        <div class="rounded-circle bg-warning flex-shrink-0 overflow-hidden" style="width: 60px; height: 60px;">
+        <div class="rounded-circle bg-warning flex-shrink-0 overflow-hidden user-page-icon">
             <img src="<?php echo $imgProfilo; ?>" alt="" class="w-100 h-100 object-fit-cover"
                 onerror="this.src='../assets/avatar/avatar0.jpg';">
         </div>
