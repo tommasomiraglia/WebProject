@@ -21,27 +21,14 @@
                 }
             ?>
 
-            <div class="card story-card rounded-4 text-white border-0 bg-dark" style="background-image: url('../<?php echo $bgImage; ?>'); 
-            background-color: #212529; /* Forza il colore scuro se l'immagine non carica */
-            aspect-ratio: 1 / 1; 
-            min-width: 150px; 
-            width: 18vw; 
-            background-size: cover; 
-            background-position: center; 
-            position: relative;">
+            <div class="card story-card rounded-4 text-white border-0 bg-dark" style="background-image: url('../<?php echo $bgImage; ?>');">
 
-                <div style="position: absolute; top:0; left:0; right:0; bottom:0; 
-                background: rgba(0, 0, 0, 0.4); /* Overlay scuro uniforme */
-                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%); 
-                border-radius: inherit;">
-                </div>
+                <div class="c-shades"></div>
 
-                <div class="card-body d-flex align-items-end" style="position: relative; z-index: 2;">
-                    <header class="d-flex align-items-center w-100 pe-3"
-                        style="position: absolute; bottom: 15px; left: 15px;">
+                <div class="card-body d-flex align-items-end">
+                    <header class="c-header d-flex align-items-center w-100 pe-3">
 
-                        <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2 flex-shrink-0" width="30"
-                            height="30" alt="Logo del gruppo <?php echo htmlspecialchars($storia['name']); ?>">
+                        <img src="../<?php echo $groupAvatar; ?>" class="card-image rounded-circle me-2 flex-shrink-0" alt="Logo del gruppo <?php echo htmlspecialchars($storia['name']); ?>">
 
                         <div class="overflow-hidden flex-grow-1">
                             <h6 class="mb-0 fw-bold text-truncate">
@@ -51,7 +38,7 @@
                                 </a>
                             </h6>
 
-                            <small class="text-light d-block text-truncate" style="opacity: 0.9;">
+                            <small class="c-subtitle text-light d-block text-truncate">
                                 <?php echo htmlspecialchars($titolo); ?>
                             </small>
                         </div>
@@ -83,7 +70,7 @@
         <div class="card-body">
 
             <header class="d-flex align-items-center mb-2">
-                <img src="../<?php echo $groupAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
+                <img src="../<?php echo $groupAvatar; ?>" class="group-avatar rounded-circle me-2"
                     alt="Avatar of <?php echo htmlspecialchars($post['username']); ?>">
                 <div>
                     <h6 class="mb-0 fw-bold">
