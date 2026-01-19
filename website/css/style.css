@@ -1,10 +1,37 @@
+/* BASE STYLE */
+
+#search-suggestions {
+    z-index: 1050;
+    width: 100%;
+    display: none;
+}
+
+.avatar-nav { 
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
+/* INDEX PAGE*/
+
 /* Enable horizontal scrolling and hide it for Webkit browsers */
 .stories-wrapper {
     display: flex;
+    /* Ensures the cards stay inline */
     overflow-x: auto;
+    /* Enables horizontal scrolling */
     overflow-y: hidden;
+    /* Prevents vertical scrolling */
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
     -ms-overflow-style: none;
+    /* IE and Edge */
     scrollbar-width: none;
+    /* Firefox */
 }
 
 .stories-wrapper::-webkit-scrollbar {
@@ -21,7 +48,9 @@
 }
 
 .custom-main-content {
+    /* Imposta la larghezza massima desiderata per il contenuto centrale */
     max-width: 800px;
+    /* Forza la centratura (margini laterali uguali) */
     margin-left: auto;
     margin-right: auto;
 
@@ -30,8 +59,10 @@
 
 body {
     background-color: #f8f9fa;
+    /* Grigio chiaro come sfondo della pagina */
 }
 
+/* Stile personalizzato per il bottone, replicando il colore scuro/rosso */
 .btn-custom-red {
     background-color: #922828;
     border-color: #922828;
@@ -44,6 +75,7 @@ body {
     border-color: #7a1f1f;
     color: white;
 }
+/* Classe per dimensionare l'immagine del polipo */
 .logo-upload-size {
     max-width: 40px;
     height: auto;
@@ -93,22 +125,4 @@ body {
 #sidebar-overlay.active {
     opacity: 1;
     visibility: visible;
-}
-
-/* BASE STYLE */
-
-#search-suggestions {
-    z-index: 1050;
-    width: 100%;
-    display: none;
-}
-
-.avatar-nav { 
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-}
-
-.dropdown-menu {
-    min-width: 250px;
 }
