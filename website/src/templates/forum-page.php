@@ -26,7 +26,7 @@
             <div class="d-flex gap-2 align-items-center">
 
                 <?php if(!Utils::isUserLoggedIn()): ?>
-                <a href="login.php" class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                <a href="login.php" class="btn-join text-white px-4 py-2 rounded-3">
                     Log In to Join
                 </a>
 
@@ -44,11 +44,11 @@
                     <input type="hidden" name="groupId" value="<?php echo $templateParams["groupId"]?>" />
 
                     <?php if($isFollowing): ?>
-                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #757575;">
+                    <button class="btn-following btn text-white px-4 py-2 rounded-3">
                         Leave
                     </button>
                     <?php else: ?>
-                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
+                    <button class="btn-join btn text-white px-4 py-2 rounded-3">
                         Join
                     </button>
                     <?php endif; ?>
@@ -85,8 +85,8 @@
                 <div class="card-body">
 
                     <header class="d-flex align-items-center mb-2">
-                        <img src="<?php echo $userAvatar; ?>" class="rounded-circle me-2" width="40" height="40"
-                            alt="" style="object-fit: cover;">
+                        <img src="<?php echo $userAvatar; ?>" class="user-icon rounded-circle me-2"
+                            alt="User Icon">
                         <div>
                             <h6 class="mb-0 fw-bold">
                                 <a href="user.php?id=<?php echo $post['userId']; ?>"

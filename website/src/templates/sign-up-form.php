@@ -15,15 +15,14 @@
 
                                 <label for="imageInput" class="text-center" style="cursor: pointer;">
 
-                                    <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-                                        style="width: 150px; height: 150px; border: 2px dashed #6c757d; background-color: #f8f9fa; position: relative;">
+                                    <div id="img-upload" class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center">
 
                                         <div id="uploadPlaceholder" class="text-dark text-center">
-                                            <i class="bi bi-person-circle" style="font-size: 4rem;"></i>
+                                            <i id="placeholderText" class="bi bi-person-circle"></i>
                                             <p class="small mb-0 mt-1">Choose image</p>
                                         </div>
 
-                                        <img id="imagePreview" src="#" alt="Anteprima profilo" style="display: none;"
+                                        <img id="imagePreview" src="#" alt="Anteprima profilo"
                                             class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" />
                                     </div>
                                 </label>
@@ -61,8 +60,7 @@
                             </div>
                         </form>
                         <p>Already a PoliHubber?
-                            <a href="login.php?ref=card" class="card-link text-decoration-underline"
-                                style="color: #595959 !important;">Log in</a>
+                            <a href="login.php?ref=card" class="btn-login card-link text-decoration-underline">Log in</a>
                         </p>
                     </div>
                 </div>

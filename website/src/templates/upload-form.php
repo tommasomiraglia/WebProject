@@ -18,7 +18,7 @@
                         <div class="d-flex justify-content-center my-5">
                             <input type="file" id="imageInput" name="postImage" accept="image/*" class="d-none" />
 
-                            <label for="imageInput" class="text-center" style="cursor: pointer;">
+                            <label for="imageInput" class="text-center imageInput">
         
                         <div id="uploadPlaceholder">
                             <i class="bi bi-cloud-arrow-up text-secondary" style="font-size: 8rem;"></i>
@@ -26,8 +26,7 @@
                         </div>
         
                         <img id="imagePreview" src="#" alt="Anteprima post"
-                        style="max-width: 100%; height: auto; display: none;"
-                        class="img-fluid rounded" />
+                        class="img-fluid rounded post-preview" />
                         </label>
                         </div>
 
