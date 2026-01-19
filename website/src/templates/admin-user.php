@@ -18,7 +18,7 @@
 
                         <a class="d-flex align-items-center text-decoration-none text-dark">
                             <img src="../<?php echo $avatarPath; ?>" alt="Avatar of <?php echo htmlspecialchars($user['username']); ?>"
-                                class="rounded-circle me-2 object-fit-cover" width="40" height="40" />
+                                class="rounded-circle me-2 object-fit-cover user-icon" />
                             <span class="fw-bold">u/<?php echo $user["username"];?></span>
                         </a>
 

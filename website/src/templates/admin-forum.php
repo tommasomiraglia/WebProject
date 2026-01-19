@@ -12,7 +12,7 @@
                         <a href="forum.php?id=<?php echo $forum["groupId"]?>"
                             class="d-flex align-items-center text-decoration-none text-dark">
                             <img src="../<?php echo $forum["avatar"]?>" alt=""
-                                class="rounded-circle me-2 object-fit-cover" width="40" height="40" />
+                                class="rounded-circle me-2 object-fit-cover group-avatar"/>
                              <span class="fw-bold">p/<?php echo $forum["name"]?>
                         </a>
                         <div class="dropdown">
