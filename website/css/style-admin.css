@@ -15,23 +15,17 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* --- MODIFICA QUI: STILE AVATAR --- */
-/* Questa classe va applicata al tag <img> dell'admin */
 .admin-avatar {
-    width: 120px;           /* Larghezza fissa */
-    height: 120px;          /* Altezza fissa identica alla larghezza */
-    object-fit: cover;      /* FONDAMENTALE: ritaglia la foto se non è quadrata */
-    border-radius: 50%;     /* La rende perfettamente tonda */
+    width: 120px;           
+    height: 120px;         
+    object-fit: cover;     
+    border-radius: 50%;     
     margin-bottom: 1.5rem;
-    
-    /* Effetto "Doppio Bordo" */
-    border: 4px solid #fff;                 /* Bordo bianco interno */
-    outline: 3px solid var(--colore-brand); /* Bordo colorato esterno */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Leggera ombra */
+    border: 4px solid #fff;                
+    outline: 3px solid var(--colore-brand); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Se usi ancora il logo da qualche parte nell'header, lascia anche questo, 
-   altrimenti puoi cancellarlo */
 header img.admin-logo {
     max-width: 130px;
     margin-bottom: 1rem;
