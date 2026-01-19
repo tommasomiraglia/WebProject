@@ -1,10 +1,37 @@
+/* BASE STYLE */
+
+#search-suggestions {
+    z-index: 1050;
+    width: 100%;
+    display: none;
+}
+
+.avatar-nav { 
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
+/* HOME PAGE*/
+
 /* Enable horizontal scrolling and hide it for Webkit browsers */
 .stories-wrapper {
     display: flex;
+    /* Ensures the cards stay inline */
     overflow-x: auto;
+    /* Enables horizontal scrolling */
     overflow-y: hidden;
+    /* Prevents vertical scrolling */
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
     -ms-overflow-style: none;
+    /* IE and Edge */
     scrollbar-width: none;
+    /* Firefox */
 }
 
 .stories-wrapper::-webkit-scrollbar {
@@ -13,15 +40,60 @@
 
 /* The cards inside the wrapper */
 .story-card {
-    min-width: 160px;
     height: 200px;
     background-size: cover;
     background-position: center;
     flex: 1;
+    background-color: #212529; /* Forza il colore scuro se l'immagine non carica */
+    aspect-ratio: 1 / 1; 
+    min-width: 150px; 
+    width: 18vw; 
+    background-size: cover; 
+    background-position: center; 
+    position: relative;
+}
+
+.c-shades {
+    position: absolute; 
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    background: rgba(0, 0, 0, 0.4); /* Overlay scuro uniforme */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%); 
+    border-radius: inherit
+}
+
+.card-body {
+    position: relative; 
+    z-index: 2;
+}
+
+.c-header {
+    position: absolute;
+    bottom: 15px; 
+    left: 15px;
+}
+
+.card-image {
+    width:30px;
+    height:30px;
+}
+
+.c-subtitle {
+    opacity: 0.9;
+}
+
+.group-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
 .custom-main-content {
+    /* Imposta la larghezza massima desiderata per il contenuto centrale */
     max-width: 800px;
+    /* Forza la centratura (margini laterali uguali) */
     margin-left: auto;
     margin-right: auto;
 
@@ -30,8 +102,10 @@
 
 body {
     background-color: #f8f9fa;
+    /* Grigio chiaro come sfondo della pagina */
 }
 
+/* Stile personalizzato per il bottone, replicando il colore scuro/rosso */
 .btn-custom-red {
     background-color: #922828;
     border-color: #922828;
@@ -44,6 +118,7 @@ body {
     border-color: #7a1f1f;
     color: white;
 }
+/* Classe per dimensionare l'immagine del polipo */
 .logo-upload-size {
     max-width: 40px;
     height: auto;
@@ -58,6 +133,11 @@ body {
 
 .admin-icon {
     width: 24px;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
 }
 
 /*SIDE BAR*/

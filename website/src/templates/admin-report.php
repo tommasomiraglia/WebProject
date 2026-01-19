@@ -22,8 +22,7 @@
             <div class="card-body">
 
                 <header class="d-flex align-items-center mb-2">
-                    <img src="../<?php echo $avatar;?>" class="rounded-circle me-2" width="40" height="40" alt=""
-                        style="object-fit: cover;">
+                    <img src="../<?php echo $avatar;?>" class="rounded-circle me-2 group-avatar" alt="group avatar">
                     <div>
                         <h6 class="mb-0 fw-bold">
                             <a class="text-decoration-none text-dark">

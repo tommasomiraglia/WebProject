@@ -69,9 +69,7 @@
                     placeholder="Search groups...">
             </div>
 
-            <div id="search-suggestions" class="position-absolute bg-white shadow-lg border rounded mt-1"
-                style="z-index: 1050; width: 100%; display: none;">
-            </div>
+            <div id="search-suggestions" class="position-absolute bg-white shadow-lg border rounded mt-1"></div>
 
         </div>
 
@@ -82,8 +80,8 @@
             <?php 
         $avatarImg = !empty($_SESSION['avatar']) ? $_SESSION['avatar'] : 'assets/avatar/avatar0.jpg'; ?>
             <a href="user.php?userId=<?php echo $_SESSION['userid']?>" class="text-decoration-none me-2">
-                <img src="../<?php echo $avatarImg; ?>" class="rounded-circle border" width="45" height="45"
-                    alt="My Profile" style="object-fit: cover;">
+                <img src="../<?php echo $avatarImg; ?>" class="avatar-nav rounded-circle border"
+                    alt="My Profile">
             </a>
             <?php else: ?>
             <a class="btn btn-dark rounded-pill text-nowrap flex-shrink-0 me-2" href="login.php">Log In</a>
@@ -97,7 +95,7 @@
                     <i class="bi bi-three-dots-vertical fs-4"></i>
                 </button>
 
-                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3" style="min-width: 250px;">
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3">
 
                     <?php if(isset($_SESSION['userid'])): ?>
                     <li>
@@ -149,13 +147,13 @@
         </div>
     </nav>
 
-    <div class="container-sm py-3 custom-main-content">
+    <main class="container-sm py-3 custom-main-content">
         <?php
             if(isset($templateParams["nome"])){
                 require($templateParams["nome"]);
             }
         ?>
-    </div>
+    </main>
 
     <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
