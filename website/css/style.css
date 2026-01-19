@@ -106,3 +106,21 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
+/* BASE STYLE */
+
+#search-suggestions {
+    z-index: 1050;
+    width: 100%;
+    display: none;
+}
+
+.avatar-nav { 
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
