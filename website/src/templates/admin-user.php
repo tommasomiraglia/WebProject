@@ -29,9 +29,6 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0">
                                 <li>
-                                    <h6 class="dropdown-header">Admin Actions</h6>
-                                </li>
-                                <li>
                                     <a class="dropdown-item text-danger" href="#"
                                         onclick="deleteUser(<?php echo $user['userId']; ?>); return false;">
                                         <i class="bi bi-trash me-2"></i> Ban User

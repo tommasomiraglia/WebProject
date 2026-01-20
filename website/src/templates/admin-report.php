@@ -54,17 +54,13 @@
                         <span>Reports: <?php echo $post["reportCount"];?></span>
                     </div>
 
-                    <div class="dropdown">
+                    <div class="dropdown dropup">
                         <button class="btn btn-light btn-sm rounded-circle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" aria-label="Admin options">
+                          aria-expanded="false" aria-label="Admin options">
                             <i class="bi bi-three-dots fs-5"></i>
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li>
-                                <h6 class="dropdown-header">Admin Actions</h6>
-                            </li>
-
                             <li>
                                 <a class="dropdown-item" href="#"
                                     onclick="inviaAzione('dismiss', <?php echo $post['postId']; ?>)">
