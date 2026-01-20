@@ -44,11 +44,11 @@
                     <input type="hidden" name="groupId" value="<?php echo $templateParams["groupId"]?>" />
 
                     <?php if($isFollowing): ?>
-                    <button class="btn-following btn text-white px-4 py-2 rounded-3">
+                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #757575">
                         Leave
                     </button>
                     <?php else: ?>
-                    <button class="btn-join btn text-white px-4 py-2 rounded-3">
+                    <button class="btn text-white px-4 py-2 rounded-3" style="background-color: #8B3635;">
                         Join
                     </button>
                     <?php endif; ?>

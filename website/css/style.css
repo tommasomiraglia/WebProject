@@ -176,15 +176,6 @@ body {
     visibility: visible;
 }
 
-/*FORUM BUTTON*/
-.btn-join{
-    background-color: #8B3635;
-}
-
-.btn-following {
-    background-color: #757575;
-}
-
 /* SIGN-UP FORM*/
 #img-upload {
     width: 150px; 
